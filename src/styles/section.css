@@ -1,10 +1,10 @@
-.education h2 {
+section h2 {
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 2rem;
 }
 
-.education h2 button.add {
+section h2 button.add {
   font-size: 1.5rem;
 }

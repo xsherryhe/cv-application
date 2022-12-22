@@ -1,4 +1,4 @@
-import '../styles/EducationEntry.css';
+import '../styles/entry.css';
 
 import EditButton from './EditButton';
 import DateRange from './DateRange';
