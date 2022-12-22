@@ -1,0 +1,24 @@
+Application
+  CV
+    Header
+      Avatar
+      Name
+      Contact
+    Education
+      EducationEntry *
+        Name (school)
+        SubName (major)
+        DateRange
+    Work
+      WorkEntry *
+        Name (company)
+        SubName (position)
+        DateRange
+        Details
+    Skills and Certifications
+      Name *
+    Honors and Awards
+      Name *
+  PhotoUpload (hidden)
+
+
