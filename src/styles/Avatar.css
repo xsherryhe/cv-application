@@ -1,3 +1,7 @@
+.avatar {
+  grid-row: 1 / span 2;
+}
+
 .avatar img {
   width: 12rem;
   height: 15rem;

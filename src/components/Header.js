@@ -1,9 +1,15 @@
+import '../styles/Header.css';
+
 import Avatar from './Avatar';
+import Name from './Name';
+import Contact from './Contact';
 
 export default function Header({ avatarImage }) {
   return (
-    <div className="header">
+    <header>
       <Avatar image={avatarImage} />
-    </div>
+      <Name />
+      <Contact />
+    </header>
   );
 }
