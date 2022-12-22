@@ -3,3 +3,7 @@ This project is a webpage of an editable CV application. It uses the React frame
 The project primarily demonstrates use of basic structures in React, including elements, components, props, and state, in order to build a functional user interface.
 
 This project is currently in progress.
+
+Image credits:
+
+1. Witterel.png -- https://obradinn.fandom.com/wiki/Robert_Witterel
