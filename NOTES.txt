@@ -6,19 +6,20 @@ Application
       Contact
     Education
       EducationEntry *
-        Name (school)
-        SubName (major)
+        h3 school
+        h4 major
+        h4 GPA
         DateRange
     Work
       WorkEntry *
-        Name (company)
-        SubName (position)
+        h3 company
+        h4 position
         DateRange
-        Details
+        p Details
     Skills and Certifications
-      Name *
+      EntryName *
     Honors and Awards
-      Name *
+      EntryName *
   PhotoUpload (hidden)
 
 

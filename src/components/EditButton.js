@@ -1,4 +1,3 @@
-import '../styles/EditButton.css';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import { faPenToSquare } from '@fortawesome/free-solid-svg-icons';
 
@@ -7,7 +6,7 @@ export default function EditButton() {
   return (
     <Button
       content={<FontAwesomeIcon icon={faPenToSquare} />}
-      className="edit"
+      className="edit icon"
     />
   );
 }

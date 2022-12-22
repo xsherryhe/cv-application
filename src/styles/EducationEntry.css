@@ -1,0 +1,20 @@
+.education .entry {
+  display: grid;
+  grid-template-columns: repeat(2, max-content);
+}
+
+.education .entry * {
+  margin: 0;
+}
+
+.education .entry h3 {
+  grid-row: 1;
+}
+
+.education .entry :not(button.edit) {
+  grid-column: 1;
+}
+
+.education .entry button.edit {
+  grid-column: 2;
+}

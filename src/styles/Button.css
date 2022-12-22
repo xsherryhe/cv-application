@@ -1,3 +1,9 @@
 button {
   cursor: pointer;
 }
+
+button.icon {
+  background-color: transparent;
+  border: none;
+  font-size: 1rem;
+}
