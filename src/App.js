@@ -8,10 +8,10 @@ import witterel from './images/Witterel.png';
 export default class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { imageUploadOn: false };
+    this.state = { imageUploadOn: false, avatarImage: witterel };
     this.self = React.createRef();
 
-    ['showImageUpload', 'hideImageUpload'].forEach(
+    ['showImageUpload', 'hideImageUpload', 'updateAvatarImage'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
   }
@@ -24,19 +24,26 @@ export default class App extends Component {
     this.setState({ imageUploadOn: false });
   }
 
+  updateAvatarImage(avatarImageSrc) {
+    this.hideImageUpload();
+    this.setState({ avatarImage: avatarImageSrc });
+  }
+
   render() {
+    const { imageUploadOn, avatarImage } = this.state;
     return (
       <div className="App" ref={this.self}>
         <CV
-          avatarImage={witterel}
+          avatarImage={avatarImage}
           handleEditAvatarClick={this.showImageUpload}
         />
-        {this.state.imageUploadOn && (
+        {imageUploadOn && (
           <ImageUpload
-            startImage={witterel}
+            startImage={avatarImage}
             imageName="Avatar"
             parentHeight={this.self.current.clientHeight}
             handleCloseClick={this.hideImageUpload}
+            handleSubmit={this.updateAvatarImage}
           />
         )}
       </div>
