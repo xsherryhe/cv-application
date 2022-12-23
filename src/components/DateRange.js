@@ -1,13 +1,5 @@
-import { format } from 'date-fns';
+import { dateFormat } from '../utilities';
 
 export default function DateRange({ start, end }) {
-  return (
-    <span>
-      {[start, end]
-        .map((date) =>
-          date instanceof Date ? format(date, 'MMMM uuuu') : date
-        )
-        .join(' - ')}
-    </span>
-  );
+  return <span>{[start, end].map(dateFormat).join(' - ')}</span>;
 }

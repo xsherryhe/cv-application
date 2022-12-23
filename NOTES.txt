@@ -19,7 +19,7 @@ Application
     Section (Skills and Certifications)
       SimpleEntry *
     Section(Honors and Awards)
-      SimpleEntry *
+      DatedEntry *
   PhotoUpload (hidden)
 
 

@@ -3,9 +3,9 @@ import '../styles/Section.css';
 import AddButton from './AddButton';
 import uniqid from 'uniqid';
 
-export default function Section({ name, entries }) {
+export default function Section({ name, entries = [] }) {
   return (
-    <section className={name.toLowerCase()}>
+    <section className={name.toLowerCase().split(' ').join('-')}>
       <h2>
         {name} <AddButton />
       </h2>

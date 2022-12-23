@@ -29,7 +29,7 @@ export default function WorkEntry({ sample }) {
             [
               'Ensured smooth sailing and crew satisfaction',
               'Traveled the seven seas',
-              'Had zero incidents involving electrified ocean crystals and vengeful attacks from local sealife',
+              'Had zero incidents involving vengeful sealife or electrified ocean crystals',
             ],
           ][sample]
         }
