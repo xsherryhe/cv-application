@@ -1,13 +1,17 @@
 import '../styles/Main.css';
 
-import Education from './Education';
-import Work from './Work';
+import Section from './Section';
+import EducationEntry from './EducationEntry';
+import WorkEntry from './WorkEntry';
 
 export default function Main() {
   return (
     <main>
-      <Education />
-      <Work />
+      <Section name="Education" entries={[<EducationEntry />]} />
+      <Section
+        name="Work"
+        entries={[<WorkEntry sample={0} />, <WorkEntry sample={1} />]}
+      />
     </main>
   );
 }

@@ -2,22 +2,38 @@ import '../styles/entry.css';
 
 import EditButton from './EditButton';
 import DateRange from './DateRange';
+import List from './List';
 
-export default function WorkEntry() {
+export default function WorkEntry({ sample }) {
   return (
     <div className="entry">
       <EditButton />
-      <h3>The Obra Dinn</h3>
-      <h4>Captain of the Ship</h4>
+      <h3>{['The Obra Dinn', 'The Stargazer'][sample]}</h3>
+      <h4>{['Captain of the Ship', 'First Mate'][sample]}</h4>
       <h4>
-        <DateRange start={new Date(1784, 7)} end="Present" />
+        <DateRange
+          start={[new Date(1790, 3), new Date(1784, 7)][sample]}
+          end={['Present', new Date(1790, 2)][sample]}
+        />
       </h4>
-      <ul>
-        <li>Headed multiple trips around the Atlantic.</li>
-        <li>Responsible for everyone on the ship.</li>
-        <li>Stopped at least three mutinies.</li>
-        <li>Defeated monsters such as Krakens and Crab Soldiers.</li>
-      </ul>
+      <List
+        items={
+          [
+            [
+              'Headed multiple trips around the Atlantic',
+              'Responsible for everyone on the ship',
+              'Thwarted at least three mutinies against myself',
+              'Defeated monsters such as Krakens and Crab Soldiers',
+              'Survived till the end',
+            ],
+            [
+              'Ensured smooth sailing and crew satisfaction',
+              'Traveled the seven seas',
+              'Had zero incidents involving electrified ocean crystals and vengeful attacks from local sealife',
+            ],
+          ][sample]
+        }
+      />
     </div>
   );
 }

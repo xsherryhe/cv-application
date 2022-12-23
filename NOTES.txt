@@ -16,10 +16,10 @@ Application
         h4 position
         DateRange
         p Details
-    Skills and Certifications
-      EntryName *
-    Honors and Awards
-      EntryName *
+    Section (Skills and Certifications)
+      SimpleEntry *
+    Section(Honors and Awards)
+      SimpleEntry *
   PhotoUpload (hidden)
 
 
