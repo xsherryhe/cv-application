@@ -1,10 +1,13 @@
 import Header from './Header';
 import Main from './Main';
 
-export default function CV({ avatarImage }) {
+export default function CV({ avatarImage, handleEditAvatarClick }) {
   return (
-    <div className="App">
-      <Header avatarImage={avatarImage} />
+    <div className="CV">
+      <Header
+        avatarImage={avatarImage}
+        handleEditAvatarClick={handleEditAvatarClick}
+      />
       <Main />
     </div>
   );

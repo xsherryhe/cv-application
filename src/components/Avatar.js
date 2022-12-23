@@ -3,11 +3,11 @@ import witterel from '../images/Witterel.png';
 
 import EditButton from './EditButton';
 
-export default function Avatar({ image = witterel }) {
+export default function Avatar({ image = witterel, handleEditAvatarClick }) {
   return (
     <div className="avatar">
       <img src={image} alt="Avatar" />
-      <EditButton />
+      <EditButton handleClick={handleEditAvatarClick} />
     </div>
   );
 }
