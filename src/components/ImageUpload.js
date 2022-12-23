@@ -6,10 +6,11 @@ import CloseButton from './CloseButton';
 export default function ImageUpload({
   startImage,
   imageName,
+  parentHeight,
   handleCloseClick,
 }) {
   return (
-    <div className="image-upload">
+    <div className="image-upload" style={{ minHeight: `${parentHeight}px` }}>
       <form action="">
         <CloseButton handleClick={handleCloseClick} />
         <h1>{imageName}</h1>

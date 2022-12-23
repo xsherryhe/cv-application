@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import React, { Component } from 'react';
 import './styles/App.css';
 
 import CV from './components/CV';
@@ -9,6 +9,7 @@ export default class App extends Component {
   constructor(props) {
     super(props);
     this.state = { imageUploadOn: false };
+    this.self = React.createRef();
 
     ['showImageUpload', 'hideImageUpload'].forEach(
       (method) => (this[method] = this[method].bind(this))
@@ -25,7 +26,7 @@ export default class App extends Component {
 
   render() {
     return (
-      <div className="App">
+      <div className="App" ref={this.self}>
         <CV
           avatarImage={witterel}
           handleEditAvatarClick={this.showImageUpload}
@@ -34,6 +35,7 @@ export default class App extends Component {
           <ImageUpload
             startImage={witterel}
             imageName="Avatar"
+            parentHeight={this.self.current.clientHeight}
             handleCloseClick={this.hideImageUpload}
           />
         )}
