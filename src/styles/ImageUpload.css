@@ -1,0 +1,14 @@
+.image-upload h1 {
+  margin: 0;
+}
+
+.image-upload img {
+  width: 18rem;
+}
+
+.image-upload form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.5rem;
+}
