@@ -5,34 +5,43 @@ import Button from './Button';
 export default class FileButton extends Component {
   constructor(props) {
     super(props);
+    this.fileTypeReg = {
+      'image/*': /\.(jpg|jpeg|png|svg|gif)$/i,
+    }[this.props.fileType];
     this.fileInputRef = React.createRef();
+    this.state = { valid: true };
 
-    ['handleSelectImageClick', 'handleImageChange'].forEach(
+    ['handleSelectFileClick', 'handleFileChange'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
   }
 
-  handleSelectImageClick(e) {
+  handleSelectFileClick(e) {
     e.preventDefault();
     this.fileInputRef.current.click();
   }
 
-  handleImageChange(e) {
-    const imageSrc = URL.createObjectURL(e.target.files[0]);
-    this.props.handleChange(imageSrc);
+  handleFileChange(e) {
+    const { validate, handleChange } = this.props;
+    const fileTypeMatch = this.fileTypeReg.test(e.target.value);
+
+    validate(fileTypeMatch ? '' : 'Invalid file type!');
+    if (!fileTypeMatch) return;
+
+    const file = URL.createObjectURL(e.target.files[0]);
+    handleChange(file);
   }
 
   render() {
-    const { content } = this.props;
+    const { content, fileType } = this.props;
     return (
       <div className="file-selection">
-        <Button content={content} handleClick={this.handleSelectImageClick} />
+        <Button content={content} handleClick={this.handleSelectFileClick} />
         <input
           className="hidden"
           type="file"
-          name="image"
-          id="image"
-          onChange={this.handleImageChange}
+          accept={fileType}
+          onChange={this.handleFileChange}
           ref={this.fileInputRef}
         />
       </div>

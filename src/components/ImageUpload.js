@@ -4,15 +4,20 @@ import '../styles/ImageUpload.css';
 import FileButton from './FileButton';
 import CloseButton from './CloseButton';
 import Button from './Button';
+import Error from './Error';
 
 export default class ImageUpload extends Component {
   constructor(props) {
     super(props);
-    this.state = { image: this.props.startImage };
+    this.state = { image: this.props.startImage, error: '' };
 
-    ['updateImage', 'handleSubmit'].forEach(
+    ['validate', 'updateImage', 'handleSubmit'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
+  }
+
+  validate(error) {
+    this.setState({ error });
   }
 
   updateImage(imageSrc) {
@@ -26,7 +31,7 @@ export default class ImageUpload extends Component {
 
   render() {
     const { imageName, parentHeight, handleCloseClick } = this.props;
-    const { image } = this.state;
+    const { image, error } = this.state;
     return (
       <div className="image-upload" style={{ minHeight: `${parentHeight}px` }}>
         <form action="" onSubmit={this.handleSubmit}>
@@ -36,7 +41,10 @@ export default class ImageUpload extends Component {
           <FileButton
             content={`Select New ${imageName}`}
             handleChange={this.updateImage}
+            validate={this.validate}
+            fileType="image/*"
           />
+          {error && <Error content={error} />}
           <Button type="submit" content="Submit" />
         </form>
       </div>
