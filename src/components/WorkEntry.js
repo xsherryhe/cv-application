@@ -1,6 +1,7 @@
 import '../styles/entry.css';
 
 import EditButton from './EditButton';
+import DeleteButton from './DeleteButton';
 import DateRange from './DateRange';
 import List from './List';
 
@@ -8,6 +9,7 @@ export default function WorkEntry({ sample }) {
   return (
     <div className="entry">
       <EditButton />
+      <DeleteButton />
       <h3>{['The Obra Dinn', 'The Stargazer'][sample]}</h3>
       <h4>{['Captain of the Ship', 'First Mate'][sample]}</h4>
       <h4>
