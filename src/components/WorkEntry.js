@@ -10,7 +10,7 @@ export default function WorkEntry({ sample }) {
     <div className="entry">
       <EditButton />
       <DeleteButton />
-      <h3>{['The Obra Dinn', 'The Stargazer'][sample]}</h3>
+      <h3 className="main">{['The Obra Dinn', 'The Stargazer'][sample]}</h3>
       <h4>{['Captain of the Ship', 'First Mate'][sample]}</h4>
       <h4>
         <DateRange

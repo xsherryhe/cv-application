@@ -3,8 +3,8 @@ import '../styles/Main.css';
 import Section from './Section';
 import EducationEntry from './EducationEntry';
 import WorkEntry from './WorkEntry';
-import SimpleEntry from './SimpleEntry';
-import DatedEntry from './DatedEntry';
+import SkillsAndCertificationsEntry from './SkillsAndCertificationsEntry';
+import HonorsAndAwardsEntry from './HonorsAndAwardsEntry';
 
 export default function Main() {
   return (
@@ -19,13 +19,13 @@ export default function Main() {
       <Section
         name="Skills and Certifications"
         entries={[...new Array(4)].map((_, i) => (
-          <SimpleEntry sample={i} />
+          <SkillsAndCertificationsEntry sample={i} />
         ))}
       />
       <Section
         name="Honors and Awards"
         entries={[...new Array(2)].map((_, i) => (
-          <DatedEntry sample={i} />
+          <HonorsAndAwardsEntry sample={i} />
         ))}
       />
     </main>

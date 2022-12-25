@@ -8,7 +8,7 @@
   margin: 0;
 }
 
-.entry h3 {
+.entry .main {
   grid-row: 1;
   grid-column: 1;
 }
