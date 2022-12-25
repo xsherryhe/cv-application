@@ -1,15 +1,16 @@
 import React, { Component } from 'react';
 
 import Button from './Button';
+import Error from './Error';
 
-export default class FileButton extends Component {
+export default class FileField extends Component {
   constructor(props) {
     super(props);
     this.fileTypeReg = {
       'image/*': /\.(jpg|jpeg|png|svg|gif)$/i,
     }[this.props.fileType];
     this.fileInputRef = React.createRef();
-    this.state = { valid: true };
+    this.state = { error: '' };
 
     ['handleSelectFileClick', 'handleFileChange'].forEach(
       (method) => (this[method] = this[method].bind(this))
@@ -22,20 +23,18 @@ export default class FileButton extends Component {
   }
 
   handleFileChange(e) {
-    const { validate, handleChange } = this.props;
+    const { handleChange } = this.props;
     const fileTypeMatch = this.fileTypeReg.test(e.target.value);
 
-    validate(fileTypeMatch ? '' : 'Invalid file type!');
-    if (!fileTypeMatch) return;
-
-    const file = URL.createObjectURL(e.target.files[0]);
-    handleChange(file);
+    this.setState({ error: fileTypeMatch ? '' : 'Invalid file type!' });
+    if (fileTypeMatch) handleChange(URL.createObjectURL(e.target.files[0]));
   }
 
   render() {
     const { content, fileType } = this.props;
+    const { error } = this.state;
     return (
-      <div className="file-selection">
+      <div className="field">
         <Button content={content} handleClick={this.handleSelectFileClick} />
         <input
           className="hidden"
@@ -44,6 +43,7 @@ export default class FileButton extends Component {
           onChange={this.handleFileChange}
           ref={this.fileInputRef}
         />
+        {error && <Error content={error} />}
       </div>
     );
   }
