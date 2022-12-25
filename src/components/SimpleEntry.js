@@ -23,13 +23,14 @@ export default class SimpleEntry extends Component {
   }
 
   render() {
-    const { deletable } = this.props;
+    const { deletable, inputType } = this.props;
     const { content, editOn } = this.state;
     return (
       <div className="entry">
         {editOn ? (
           <SingleInputForm
             startValue={content}
+            inputType={inputType}
             handleSubmit={this.updateContent}
           />
         ) : (
@@ -42,4 +43,8 @@ export default class SimpleEntry extends Component {
   }
 }
 
-SimpleEntry.defaultProps = { startContent: '', deletable: false };
+SimpleEntry.defaultProps = {
+  startContent: '',
+  inputType: 'text',
+  deletable: false,
+};

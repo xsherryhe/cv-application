@@ -6,26 +6,28 @@ import {
   faLocationDot,
 } from '@fortawesome/free-solid-svg-icons';
 
-import EditButton from './EditButton';
+import SimpleEntry from './SimpleEntry';
 
-export default function Contact() {
+// TO DO: Make SingleInputForm a grid with different grid row 1 heights
+export default function Contact({
+  emailContent = 'rwitterel@obra.dinn',
+  phoneContent = '1-800-CAPTAIN',
+  addressContent = '1807 Obra Dinn, Atlantic Ocean, World',
+}) {
   return (
     <div className="contact">
       <h2>
         <div className="email">
           <FontAwesomeIcon icon={faEnvelope} />
-          <span className="text">rwitterel@obra.dinn</span>
-          <EditButton />
+          <SimpleEntry startContent={emailContent} inputType="email" />
         </div>
         <div className="phone">
           <FontAwesomeIcon icon={faPhone} />
-          <span className="text">1-800-CAPTAIN</span>
-          <EditButton />
+          <SimpleEntry startContent={phoneContent} inputType="tel" />
         </div>
         <div className="address">
           <FontAwesomeIcon icon={faLocationDot} />
-          <span className="text">1807 Obra Dinn, Atlantic Ocean, World</span>
-          <EditButton />
+          <SimpleEntry startContent={addressContent} />
         </div>
       </h2>
     </div>

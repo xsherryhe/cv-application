@@ -1,4 +1,8 @@
 form.single-input {
   display: flex;
-  align-items: flex-start;
+  align-items: center;
+}
+
+form.single-input button.submit {
+  font-size: 1.5rem;
 }

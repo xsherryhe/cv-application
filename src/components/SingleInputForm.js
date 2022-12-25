@@ -28,6 +28,7 @@ export default class SingleInputForm extends Component {
 
   render() {
     const { inputValue, submitted } = this.state;
+    const { inputType } = this.props;
     return (
       <form
         noValidate
@@ -36,7 +37,7 @@ export default class SingleInputForm extends Component {
         onSubmit={this.handleSubmit}
       >
         <InputField
-          type="text"
+          type={inputType}
           value={inputValue}
           submitted={submitted}
           handleChange={this.updateInput}
@@ -46,3 +47,5 @@ export default class SingleInputForm extends Component {
     );
   }
 }
+
+SingleInputForm.defaultProps = { inputType: 'text' };

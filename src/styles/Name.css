@@ -9,6 +9,6 @@
   font-size: 2rem;
 }
 
-.name button.submit {
+.name form.single-input button.submit {
   font-size: 3rem;
 }
