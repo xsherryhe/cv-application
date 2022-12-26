@@ -9,6 +9,6 @@
   align-items: center;
 }
 
-.contact form.single-input {
+.contact form.inline {
   grid-template-rows: 2rem max-content;
 }

@@ -9,10 +9,10 @@
   font-size: 2rem;
 }
 
-.name form.single-input {
+.name form.inline {
   grid-template-rows: 4rem max-content;
 }
 
-.name form.single-input button.submit {
+.name form.inline button.submit {
   font-size: 3rem;
 }

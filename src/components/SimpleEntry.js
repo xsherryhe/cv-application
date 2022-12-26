@@ -2,7 +2,7 @@ import { Component } from 'react';
 
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
-import SimpleEntryForm from './SimpleEntryForm';
+import EntryForm from './EntryForm';
 
 export default class SimpleEntry extends Component {
   constructor(props) {
@@ -18,8 +18,8 @@ export default class SimpleEntry extends Component {
     this.setState({ editOn: true });
   }
 
-  updateContent(content) {
-    this.setState({ content, editOn: false });
+  updateContent({ content }) {
+    this.setState({ content: content.value, editOn: false });
   }
 
   render() {
@@ -28,9 +28,9 @@ export default class SimpleEntry extends Component {
     return (
       <div className="entry">
         {editOn ? (
-          <SimpleEntryForm
-            startValue={content}
-            inputType={inputType}
+          <EntryForm
+            inline={true}
+            startValues={{ content: { value: content, type: inputType } }}
             handleSubmit={this.updateContent}
           />
         ) : (
