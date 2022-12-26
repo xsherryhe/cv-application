@@ -8,7 +8,6 @@ import {
 
 import SimpleEntry from './SimpleEntry';
 
-// TO DO: Make SingleInputForm a grid with different grid row 1 heights
 export default function Contact({
   emailContent = 'rwitterel@obra.dinn',
   phoneContent = '1-800-CAPTAIN',

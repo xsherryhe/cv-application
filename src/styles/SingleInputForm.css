@@ -1,8 +1,16 @@
 form.single-input {
-  display: flex;
+  display: grid;
+  grid-template: 1rem max-content / repeat(2, max-content);
   align-items: center;
+}
+
+form.single-input .field {
+  grid-row: 1 / span 2;
+  grid-column: 1;
 }
 
 form.single-input button.submit {
   font-size: 1.5rem;
+  grid-row: 1;
+  grid-column: 2;
 }

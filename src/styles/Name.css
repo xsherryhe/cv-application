@@ -9,6 +9,10 @@
   font-size: 2rem;
 }
 
+.name form.single-input {
+  grid-template-rows: 4rem max-content;
+}
+
 .name form.single-input button.submit {
   font-size: 3rem;
 }
