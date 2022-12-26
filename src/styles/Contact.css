@@ -12,7 +12,3 @@
 .contact form.single-input {
   grid-template-rows: 2rem max-content;
 }
-
-.contact .address input {
-  min-width: 28rem;
-}

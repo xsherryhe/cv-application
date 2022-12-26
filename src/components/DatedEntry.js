@@ -1,15 +1,11 @@
 import { dateFormat } from '../utilities';
 import SimpleEntry from './SimpleEntry';
 
-export default function DatedEntry({
-  startContent,
-  startDate,
-  deletable = false,
-}) {
+export default function DatedEntry({ content, date, handleDelete = false }) {
   return (
     <SimpleEntry
-      startContent={`${startContent} - ${dateFormat(startDate)}`}
-      deletable={deletable}
+      content={`${content} - ${dateFormat(date)}`}
+      handleDelete={handleDelete}
     />
   );
 }

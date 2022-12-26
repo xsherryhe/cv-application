@@ -4,7 +4,7 @@ import '../styles/SingleInputForm.css';
 import InputField from './InputField';
 import SubmitButton from './SubmitButton';
 
-export default class SingleInputForm extends Component {
+export default class SimpleEntryForm extends Component {
   constructor(props) {
     super(props);
 
@@ -48,4 +48,4 @@ export default class SingleInputForm extends Component {
   }
 }
 
-SingleInputForm.defaultProps = { inputType: 'text' };
+SimpleEntryForm.defaultProps = { inputType: 'text' };

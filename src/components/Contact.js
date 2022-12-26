@@ -18,15 +18,15 @@ export default function Contact({
       <h2>
         <div className="email">
           <FontAwesomeIcon icon={faEnvelope} />
-          <SimpleEntry startContent={emailContent} inputType="email" />
+          <SimpleEntry content={emailContent} inputType="email" />
         </div>
         <div className="phone">
           <FontAwesomeIcon icon={faPhone} />
-          <SimpleEntry startContent={phoneContent} inputType="tel" />
+          <SimpleEntry content={phoneContent} inputType="tel" />
         </div>
         <div className="address">
           <FontAwesomeIcon icon={faLocationDot} />
-          <SimpleEntry startContent={addressContent} />
+          <SimpleEntry content={addressContent} />
         </div>
       </h2>
     </div>

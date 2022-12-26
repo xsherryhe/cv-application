@@ -2,13 +2,13 @@ import { Component } from 'react';
 
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
-import SingleInputForm from './SingleInputForm';
+import SimpleEntryForm from './SimpleEntryForm';
 
 export default class SimpleEntry extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { content: this.props.startContent, editOn: false };
+    this.state = { content: this.props.content, editOn: false };
     ['showEdit', 'updateContent'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
@@ -23,12 +23,12 @@ export default class SimpleEntry extends Component {
   }
 
   render() {
-    const { deletable, inputType } = this.props;
+    const { inputType, handleDelete } = this.props;
     const { content, editOn } = this.state;
     return (
       <div className="entry">
         {editOn ? (
-          <SingleInputForm
+          <SimpleEntryForm
             startValue={content}
             inputType={inputType}
             handleSubmit={this.updateContent}
@@ -37,14 +37,13 @@ export default class SimpleEntry extends Component {
           <div className="main">{content}</div>
         )}
         {!editOn && <EditButton handleClick={this.showEdit} />}
-        {!editOn && deletable && <DeleteButton />}
+        {!editOn && handleDelete && <DeleteButton handleClick={handleDelete} />}
       </div>
     );
   }
 }
 
 SimpleEntry.defaultProps = {
-  startContent: '',
   inputType: 'text',
-  deletable: false,
+  handleDelete: false,
 };

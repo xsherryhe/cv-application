@@ -2,10 +2,10 @@ import '../styles/Name.css';
 
 import SimpleEntry from './SimpleEntry';
 
-export default function Name({ startContent = 'Captain Robert Witterel' }) {
+export default function Name({ content = 'Captain Robert Witterel' }) {
   return (
     <h1 className="name">
-      <SimpleEntry startContent={startContent} />
+      <SimpleEntry content={content} />
     </h1>
   );
 }

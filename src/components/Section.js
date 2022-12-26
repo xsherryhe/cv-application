@@ -1,7 +1,6 @@
 import '../styles/Section.css';
 
 import AddButton from './AddButton';
-import uniqid from 'uniqid';
 
 export default function Section({ name, entries = [] }) {
   return (
@@ -9,8 +8,8 @@ export default function Section({ name, entries = [] }) {
       <h2>
         {name} <AddButton />
       </h2>
-      {entries.map((entry) => (
-        <div key={uniqid()}>{entry}</div>
+      {entries.map(({ id, entry }) => (
+        <div key={id}>{entry}</div>
       ))}
     </section>
   );
