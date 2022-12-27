@@ -1,0 +1,22 @@
+.field-set.date {
+  min-height: 1.5rem;
+  display: flex;
+  gap: 1rem;
+  align-items: center;
+}
+
+.field-set.date .field {
+  flex-direction: row;
+  align-items: center;
+  gap: 0.25rem;
+}
+
+.field-set.date .month-and-year {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+}
+
+.field-set.date .month-and-year input {
+  min-width: 4rem;
+}

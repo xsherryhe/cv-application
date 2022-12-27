@@ -8,8 +8,13 @@ export default class SimpleEntry extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { content: this.props.content, editOn: false };
-    ['showEdit', 'updateContent'].forEach(
+    this.state = {
+      values: {
+        content: { value: this.props.content, types: [this.props.inputType] },
+      },
+      editOn: false,
+    };
+    ['showEdit', 'updateValues'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
   }
@@ -18,26 +23,29 @@ export default class SimpleEntry extends Component {
     this.setState({ editOn: true });
   }
 
-  updateContent({ content }) {
-    this.setState({ content: content.value, editOn: false });
+  updateValues(inputValues) {
+    this.setState({ values: inputValues, editOn: false });
   }
 
   render() {
-    const { inputType, handleDelete } = this.props;
-    const { content, editOn } = this.state;
+    const { handleDelete } = this.props;
+    const { values, editOn } = this.state;
+    const content = values.content.value;
     return (
-      <div className="entry">
+      <div>
         {editOn ? (
           <EntryForm
             inline={true}
-            startValues={{ content: { value: content, type: inputType } }}
-            handleSubmit={this.updateContent}
+            startValues={values}
+            handleSubmit={this.updateValues}
           />
         ) : (
-          <div className="main">{content}</div>
+          <div className="entry">
+            <div className="main">{content}</div>
+            <EditButton handleClick={this.showEdit} />
+            {handleDelete && <DeleteButton handleClick={handleDelete} />}
+          </div>
         )}
-        {!editOn && <EditButton handleClick={this.showEdit} />}
-        {!editOn && handleDelete && <DeleteButton handleClick={handleDelete} />}
       </div>
     );
   }

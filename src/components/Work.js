@@ -14,8 +14,8 @@ export default class Work extends Component {
           id: uniqid(),
           company: 'The Obra Dinn',
           position: 'Captain of the Ship',
-          startDate: new Date(1790, 3),
-          endDate: 'Present',
+          startDate: { month: 3, year: 1790, present: false },
+          endDate: { month: null, year: null, present: true },
           details: [
             'Headed multiple trips around the Atlantic',
             'Responsible for everyone on the ship',
@@ -28,8 +28,8 @@ export default class Work extends Component {
           id: uniqid(),
           company: 'The Stargazer',
           position: 'First Mate',
-          startDate: new Date(1784, 7),
-          endDate: new Date(1790, 2),
+          startDate: { month: 7, year: 1784, present: false },
+          endDate: { month: 2, year: 1790, present: false },
           details: [
             'Ensured smooth sailing and crew satisfaction',
             'Traveled the seven seas',

@@ -1,16 +1,29 @@
-form.inline {
+form {
+  width: max-content;
   display: grid;
-  grid-template: 1.6rem max-content / repeat(2, max-content);
   align-items: center;
+  justify-items: start;
+  row-gap: 0.5rem;
+}
+
+form input {
+  min-width: 28rem;
+}
+
+form div.submit {
+  min-width: 28rem;
+  display: flex;
+  justify-content: center;
+}
+
+form.inline {
+  grid-template: 1.6rem max-content / repeat(2, max-content);
+  row-gap: 0;
 }
 
 form.inline .field {
   grid-row: 1 / span 2;
   grid-column: 1;
-}
-
-form.inline input {
-  min-width: 28rem;
 }
 
 form.inline button.submit {

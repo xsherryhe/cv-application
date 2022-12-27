@@ -4,12 +4,12 @@ import '../styles/EntryForm.css';
 import InputField from './InputField';
 import SubmitButton from './SubmitButton';
 import Button from './Button';
+import DateFieldSet from './DateFieldSet';
 
 export default class EntryForm extends Component {
   constructor(props) {
     super(props);
 
-    // startValues: { school: { value: 'Naval Academy', type: 'text' }, major: { value: 'Siren Studies', type: 'text'}, etc }
     this.state = { inputValues: this.props.startValues, submitted: false };
 
     ['updateInput', 'handleSubmit'].forEach(
@@ -42,15 +42,36 @@ export default class EntryForm extends Component {
         action=""
         onSubmit={this.handleSubmit}
       >
-        {Object.entries(inputValues).map(([attribute, { value, type }]) => (
-          <InputField
-            type={type}
-            value={value}
-            submitted={submitted}
-            handleChange={this.updateInput(attribute)}
-          />
-        ))}
-        {inline ? <SubmitButton /> : <Button type="submit" content="Submit" />}
+        {Object.entries(inputValues).map(
+          ([attribute, { value, type }]) =>
+            ({
+              date: (
+                <DateFieldSet
+                  key={attribute}
+                  name={attribute}
+                  date={value}
+                  submitted={submitted}
+                  handleChange={this.updateInput(attribute)}
+                />
+              ),
+            }[type] || (
+              <InputField
+                key={attribute}
+                name={inline ? '' : attribute}
+                type={type}
+                value={value}
+                submitted={submitted}
+                handleChange={this.updateInput(attribute)}
+              />
+            ))
+        )}
+        {inline ? (
+          <SubmitButton />
+        ) : (
+          <div className="submit">
+            <Button type="submit" content="Submit" />
+          </div>
+        )}
       </form>
     );
   }

@@ -2,3 +2,9 @@
   display: flex;
   flex-direction: column;
 }
+
+input[type="checkbox"] {
+  min-width: 1rem;
+  min-height: 1rem;
+  cursor: pointer;
+}

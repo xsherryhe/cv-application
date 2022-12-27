@@ -1,9 +1,19 @@
 import { format } from 'date-fns';
 
-export function dateFormat(date) {
-  return date instanceof Date ? format(date, 'MMMM uuuu') : date;
+export function dateFormat(date, formatString = 'MMMM uuuu') {
+  return date instanceof Date ? format(date, formatString) : date;
 }
 
-export function capitalize(string) {
-  return string[0].toUpperCase() + string.slice(1);
+const humanReadableNames = {
+  gpa: 'GPA',
+};
+
+export function humanReadable(string) {
+  return (
+    humanReadableNames[string] ||
+    string
+      .split(/(?=[A-Z])/)
+      .map((word) => word[0].toUpperCase() + word.slice(1))
+      .join(' ')
+  );
 }

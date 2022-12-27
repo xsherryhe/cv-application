@@ -15,8 +15,8 @@ export default class Education extends Component {
           school: 'Beast Naval Academy',
           major: 'Siren Studies',
           gpa: '4.0 / 4.0',
-          startDate: new Date(1780, 7),
-          endDate: new Date(1784, 5),
+          startDate: { month: 7, year: 1780, present: false },
+          endDate: { month: 5, year: 1784, present: false },
         },
       ],
     };
