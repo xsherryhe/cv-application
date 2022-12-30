@@ -1,10 +1,8 @@
-import uniqid from 'uniqid';
-
 export default function List({ items }) {
   return (
     <ul>
-      {items.map((item) => (
-        <li key={uniqid()}>{item}</li>
+      {items.map(({ id, content }) => (
+        <li key={id}>{content}</li>
       ))}
     </ul>
   );

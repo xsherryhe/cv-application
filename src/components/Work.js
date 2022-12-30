@@ -17,11 +17,20 @@ export default class Work extends Component {
           startDate: { month: 3, year: 1790, present: false },
           endDate: { month: null, year: null, present: true },
           details: [
-            'Headed multiple trips around the Atlantic',
-            'Responsible for everyone on the ship',
-            'Thwarted at least three mutinies against myself',
-            'Defeated monsters such as Krakens and Crab Soldiers',
-            'Survived till the end',
+            {
+              id: uniqid(),
+              content: 'Headed multiple trips around the Atlantic',
+            },
+            { id: uniqid(), content: 'Responsible for everyone on the ship' },
+            {
+              id: uniqid(),
+              content: 'Thwarted at least three mutinies against myself',
+            },
+            {
+              id: uniqid(),
+              content: 'Defeated monsters such as Krakens and Crab Soldiers',
+            },
+            { id: uniqid(), content: 'Survived till the end' },
           ],
         },
         {
@@ -31,9 +40,16 @@ export default class Work extends Component {
           startDate: { month: 7, year: 1784, present: false },
           endDate: { month: 2, year: 1790, present: false },
           details: [
-            'Ensured smooth sailing and crew satisfaction',
-            'Traveled the seven seas',
-            'Had zero incidents involving vengeful sealife or electrified ocean crystals',
+            {
+              id: uniqid(),
+              content: 'Ensured smooth sailing and crew satisfaction',
+            },
+            { id: uniqid(), content: 'Traveled the seven seas' },
+            {
+              id: uniqid(),
+              content:
+                'Had zero incidents involving vengeful sealife or electrified ocean crystals',
+            },
           ],
         },
       ],

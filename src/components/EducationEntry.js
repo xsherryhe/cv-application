@@ -6,7 +6,6 @@ import DeleteButton from './DeleteButton';
 import DateRange from './DateRange';
 import EntryForm from './EntryForm';
 
-// TO DO: Add a present option to date edit
 export default class EducationEntry extends Component {
   constructor(props) {
     super(props);

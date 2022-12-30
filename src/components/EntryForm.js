@@ -5,6 +5,7 @@ import InputField from './InputField';
 import SubmitButton from './SubmitButton';
 import Button from './Button';
 import DateFieldSet from './DateFieldSet';
+import ListFieldSet from './ListFieldSet';
 
 export default class EntryForm extends Component {
   constructor(props) {
@@ -50,6 +51,15 @@ export default class EntryForm extends Component {
                   key={attribute}
                   name={attribute}
                   date={value}
+                  submitted={submitted}
+                  handleChange={this.updateInput(attribute)}
+                />
+              ),
+              list: (
+                <ListFieldSet
+                  key={attribute}
+                  name={attribute}
+                  items={value}
                   submitted={submitted}
                   handleChange={this.updateInput(attribute)}
                 />

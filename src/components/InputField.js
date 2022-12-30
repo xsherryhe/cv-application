@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import '../styles/InputField.css';
-import { humanReadable } from '../utilities';
 
 import Error from './Error';
 import Label from './Label';
