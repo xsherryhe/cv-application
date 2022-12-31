@@ -9,16 +9,25 @@ export default class SelectField extends Component {
     super(props);
 
     this.state = { error: '', renderedError: '' };
+    this.ref = React.createRef();
 
-    ['handleChange'].forEach(
+    ['validate', 'handleChange'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
   }
 
+  validate(element) {
+    element.checkValidity();
+    this.setState({ error: element.validationMessage });
+  }
+
   handleChange(e) {
-    e.target.checkValidity();
-    this.setState({ error: e.target.validationMessage });
+    this.validate(e.target);
     this.props.handleChange(e.target.value);
+  }
+
+  componentDidMount() {
+    this.validate(this.ref.current);
   }
 
   componentDidUpdate() {
@@ -35,7 +44,12 @@ export default class SelectField extends Component {
     return (
       <div className="field">
         {name && <label htmlFor={name}>{humanReadable(name)}</label>}
-        <select id={name} defaultValue={value} onChange={this.handleChange}>
+        <select
+          id={name}
+          defaultValue={value}
+          onChange={this.handleChange}
+          ref={this.ref}
+        >
           {!required && <option value="">--</option>}
           {options.map((content, i) => (
             <option key={i} value={i}>

@@ -14,13 +14,17 @@ export default class SimpleEntry extends Component {
       },
       editOn: false,
     };
-    ['showEdit', 'updateValues'].forEach(
+    ['showEdit', 'hideEdit', 'updateValues'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
   }
 
   showEdit() {
     this.setState({ editOn: true });
+  }
+
+  hideEdit() {
+    this.setState({ editOn: false });
   }
 
   updateValues(inputValues) {
@@ -37,6 +41,7 @@ export default class SimpleEntry extends Component {
           <EntryForm
             inline={true}
             startValues={values}
+            handleClose={this.hideEdit}
             handleSubmit={this.updateValues}
           />
         ) : (

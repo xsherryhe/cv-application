@@ -17,9 +17,18 @@ export default class SkillsAndCertifications extends Component {
       ].map((content) => ({ id: uniqid(), content })),
     };
 
-    ['deleteEntry'].forEach(
+    ['addEntry', 'deleteEntry'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
+  }
+
+  addEntry(inputValues) {
+    this.setState({
+      entries: [
+        { content: inputValues.content.value, id: uniqid() },
+        ...this.state.entries,
+      ],
+    });
   }
 
   deleteEntry(deleteId) {
@@ -33,6 +42,9 @@ export default class SkillsAndCertifications extends Component {
     return (
       <Section
         name="Skills and Certifications"
+        inlineForm={true}
+        attributes={{ content: 'text' }}
+        addEntry={this.addEntry}
         entries={entries.map(({ id, content }) => ({
           id,
           entry: (

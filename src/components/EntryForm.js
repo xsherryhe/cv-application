@@ -81,7 +81,10 @@ export default class EntryForm extends Component {
             ))
         )}
         {inline || short ? (
-          <SubmitButton />
+          <div className="buttons">
+            <SubmitButton />
+            <CloseButton handleClick={handleClose} />
+          </div>
         ) : (
           <div className="submit">
             <Button type="submit" content="Submit" />

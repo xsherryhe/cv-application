@@ -9,18 +9,27 @@ export default class InputField extends Component {
     super(props);
 
     this.state = { error: '', renderedError: '' };
+    this.ref = React.createRef();
 
-    ['handleChange'].forEach(
+    ['validate', 'handleChange'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
   }
 
+  validate(element) {
+    element.checkValidity();
+    this.setState({ error: element.validationMessage });
+  }
+
   handleChange(e) {
-    e.target.checkValidity();
-    this.setState({ error: e.target.validationMessage });
+    this.validate(e.target);
     this.props.handleChange(
       e.target.type === 'checkbox' ? e.target.checked : e.target.value
     );
+  }
+
+  componentDidMount() {
+    this.validate(this.ref.current);
   }
 
   componentDidUpdate() {
@@ -46,6 +55,7 @@ export default class InputField extends Component {
           max={max}
           onChange={this.handleChange}
           required={required}
+          ref={this.ref}
         />
         {type === 'checkbox' && name && <Label name={name} />}
         {renderedError && <Error content={renderedError} />}

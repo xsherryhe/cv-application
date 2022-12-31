@@ -9,29 +9,19 @@ export default class HonorsAndAwardsEntry extends Component {
   constructor(props) {
     super(props);
 
-    const attributes = {
-      content: 'text',
-      date: 'date',
-    };
+    this.state = { values: this.props.values, editOn: false };
 
-    this.state = {
-      values: Object.entries(attributes).reduce(
-        (attributes, [attribute, type]) => ({
-          ...attributes,
-          [attribute]: { value: this.props[attribute], type },
-        }),
-        {}
-      ),
-      editOn: false,
-    };
-
-    ['showEdit', 'updateValues'].forEach(
+    ['showEdit', 'hideEdit', 'updateValues'].forEach(
       (method) => (this[method] = this[method].bind(this))
     );
   }
 
   showEdit() {
     this.setState({ editOn: true });
+  }
+
+  hideEdit() {
+    this.setState({ editOn: false });
   }
 
   updateValues(inputValues) {
@@ -48,6 +38,7 @@ export default class HonorsAndAwardsEntry extends Component {
           <EntryForm
             short={true}
             startValues={values}
+            handleClose={this.hideEdit}
             handleSubmit={this.updateValues}
           />
         ) : (

@@ -42,8 +42,12 @@
   grid-column: 1 / span 3;
 }
 
-.entry-form.short button.submit, .entry-form.inline button.submit {
-  font-size: 1.5rem;
+.entry-form.short .buttons, .entry-form.inline .buttons {
   grid-row: 1;
   grid-column: 2;
+}
+
+.entry-form.short .buttons button,
+.entry-form.inline .buttons button {
+  font-size: 1.5rem;
 }

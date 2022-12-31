@@ -10,24 +10,7 @@ export default class EducationEntry extends Component {
   constructor(props) {
     super(props);
 
-    const attributes = {
-      school: 'text',
-      major: 'text',
-      gpa: 'text',
-      startDate: 'date',
-      endDate: 'date',
-    };
-
-    this.state = {
-      values: Object.entries(attributes).reduce(
-        (attributes, [attribute, type]) => ({
-          ...attributes,
-          [attribute]: { value: this.props[attribute], type },
-        }),
-        {}
-      ),
-      editOn: false,
-    };
+    this.state = { values: this.props.values, editOn: false };
 
     ['showEdit', 'hideEdit', 'updateValues'].forEach((method) => {
       this[method] = this[method].bind(this);

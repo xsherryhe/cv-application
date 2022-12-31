@@ -11,24 +11,7 @@ export default class WorkEntry extends Component {
   constructor(props) {
     super(props);
 
-    const attributes = {
-      company: 'text',
-      position: 'text',
-      startDate: 'date',
-      endDate: 'date',
-      details: 'list',
-    };
-
-    this.state = {
-      values: Object.entries(attributes).reduce(
-        (attributes, [attribute, type]) => ({
-          ...attributes,
-          [attribute]: { value: this.props[attribute], type },
-        }),
-        {}
-      ),
-      editOn: false,
-    };
+    this.state = { values: this.props.values, editOn: false };
 
     ['showEdit', 'hideEdit', 'updateValues'].forEach((method) => {
       this[method] = this[method].bind(this);
