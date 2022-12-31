@@ -13,12 +13,12 @@ export default class HonorsAndAwards extends Component {
         {
           id: uniqid(),
           content: 'Most Detailed Insurance Log Award',
-          date: new Date(1808, 1),
+          date: { year: 1808, month: 1 },
         },
         {
           id: uniqid(),
           content: 'Best Leader of a Fictional Ship Award',
-          date: new Date(2018, 9),
+          date: { year: 2018, month: 9 },
         },
       ],
     };

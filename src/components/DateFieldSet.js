@@ -14,7 +14,7 @@ export default function DateFieldSet({ name, date, submitted, handleChange }) {
 
   return (
     <div className="field-set date">
-      <label>{humanReadable(name)}</label>
+      {name && <label>{humanReadable(name)}</label>}
       <InputField
         name="present"
         type="checkbox"

@@ -43,7 +43,6 @@ export default class WorkEntry extends Component {
     this.setState({ values: inputValues, editOn: false });
   }
 
-  // TO DO: Add list type field set component
   render() {
     const { handleDelete } = this.props;
     const { values, editOn } = this.state;

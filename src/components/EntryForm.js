@@ -34,12 +34,12 @@ export default class EntryForm extends Component {
   }
 
   render() {
-    const { inline } = this.props;
+    const { inline, short } = this.props;
     const { inputValues, submitted } = this.state;
     return (
       <form
         noValidate
-        className={inline ? 'inline' : ''}
+        className={inline ? 'inline' : short ? 'short' : ''}
         action=""
         onSubmit={this.handleSubmit}
       >
@@ -49,7 +49,7 @@ export default class EntryForm extends Component {
               date: (
                 <DateFieldSet
                   key={attribute}
-                  name={attribute}
+                  name={inline || short ? '' : attribute}
                   date={value}
                   submitted={submitted}
                   handleChange={this.updateInput(attribute)}
@@ -58,7 +58,7 @@ export default class EntryForm extends Component {
               list: (
                 <ListFieldSet
                   key={attribute}
-                  name={attribute}
+                  name={inline || short ? '' : attribute}
                   items={value}
                   submitted={submitted}
                   handleChange={this.updateInput(attribute)}
@@ -67,7 +67,7 @@ export default class EntryForm extends Component {
             }[type] || (
               <InputField
                 key={attribute}
-                name={inline ? '' : attribute}
+                name={inline || short ? '' : attribute}
                 type={type}
                 value={value}
                 submitted={submitted}
@@ -75,7 +75,7 @@ export default class EntryForm extends Component {
               />
             ))
         )}
-        {inline ? (
+        {inline || short ? (
           <SubmitButton />
         ) : (
           <div className="submit">
@@ -86,3 +86,5 @@ export default class EntryForm extends Component {
     );
   }
 }
+
+EntryForm.defaultProps = { inline: false, short: false };

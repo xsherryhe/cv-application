@@ -22,6 +22,6 @@ Application
       DatedEntry *
   PhotoUpload (hidden)
 
-  // TO DO: Honors and awards edit form, exit edit button, add entries buttons
+  // TO DO: Exit edit button, add entries buttons, disable all in edit mode?
 
 

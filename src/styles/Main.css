@@ -5,3 +5,8 @@ main {
   flex-direction: column;
   gap: 1rem;
 }
+
+main form {
+  font-size: 1rem;
+  font-weight: normal;
+}

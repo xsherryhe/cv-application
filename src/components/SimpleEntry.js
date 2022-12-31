@@ -10,7 +10,7 @@ export default class SimpleEntry extends Component {
 
     this.state = {
       values: {
-        content: { value: this.props.content, types: [this.props.inputType] },
+        content: { value: this.props.content, type: this.props.inputType },
       },
       editOn: false,
     };

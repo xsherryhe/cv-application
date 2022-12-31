@@ -16,17 +16,23 @@ form div.submit {
   justify-content: center;
 }
 
-form.inline {
-  grid-template: 1.6rem max-content / repeat(2, max-content);
+form.short, form.inline {
+  grid-template: 1.6rem max-content / repeat(3, max-content);
   row-gap: 0;
 }
 
-form.inline .field {
+form.short .field:first-child, form.short .field-set:first-child,
+form.inline .field,
+form.inline .field-set {
   grid-row: 1 / span 2;
   grid-column: 1;
 }
 
-form.inline button.submit {
+form.short .field:not(:first-child), form.short .field-set:not(:first-child) {
+  grid-column: 1 / span 3;
+}
+
+form.short button.submit, form.inline button.submit {
   font-size: 1.5rem;
   grid-row: 1;
   grid-column: 2;

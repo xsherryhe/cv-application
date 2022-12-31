@@ -1,15 +1,9 @@
-import { dateFormat } from '../utilities';
+import DateComponent from './Date';
 
 export default function DateRange({ start, end }) {
   return (
     <span>
-      {[start, end]
-        .map(({ year, month, present }) => {
-          if (present) return 'Present';
-          if (!(typeof month === 'number' || /^\d+$/.test(month))) return year;
-          return dateFormat(new Date(year, month));
-        })
-        .join(' - ')}
+      <DateComponent date={start} /> - <DateComponent date={end} />
     </span>
   );
 }
