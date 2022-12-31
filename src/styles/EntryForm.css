@@ -1,4 +1,4 @@
-form {
+.entry-form {
   width: max-content;
   display: grid;
   align-items: center;
@@ -6,33 +6,43 @@ form {
   row-gap: 0.5rem;
 }
 
-form input {
+.entry-form button.close {
+  justify-self: end;
+}
+
+.entry-form input {
   min-width: 28rem;
 }
 
-form div.submit {
-  min-width: 28rem;
+.entry-form div.submit {
+  justify-self: stretch;
   display: flex;
   justify-content: center;
 }
 
-form.short, form.inline {
+.entry-form:not(.short):not(.inline) {
+  border: 1px black dashed;
+  border-radius: 0.2rem;
+  padding: 0.5rem 0.5rem 1rem;
+}
+
+.entry-form.short, .entry-form.inline {
   grid-template: 1.6rem max-content / repeat(3, max-content);
   row-gap: 0;
 }
 
-form.short .field:first-child, form.short .field-set:first-child,
-form.inline .field,
-form.inline .field-set {
+.entry-form.short .field:first-child, .entry-form.short .field-set:first-child,
+.entry-form.inline .field,
+.entry-form.inline .field-set {
   grid-row: 1 / span 2;
   grid-column: 1;
 }
 
-form.short .field:not(:first-child), form.short .field-set:not(:first-child) {
+.entry-form.short .field:not(:first-child), .entry-form.short .field-set:not(:first-child) {
   grid-column: 1 / span 3;
 }
 
-form.short button.submit, form.inline button.submit {
+.entry-form.short button.submit, .entry-form.inline button.submit {
   font-size: 1.5rem;
   grid-row: 1;
   grid-column: 2;

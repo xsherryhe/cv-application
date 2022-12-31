@@ -30,13 +30,17 @@ export default class WorkEntry extends Component {
       editOn: false,
     };
 
-    ['showEdit', 'updateValues'].forEach((method) => {
+    ['showEdit', 'hideEdit', 'updateValues'].forEach((method) => {
       this[method] = this[method].bind(this);
     });
   }
 
   showEdit() {
     this.setState({ editOn: true });
+  }
+
+  hideEdit() {
+    this.setState({ editOn: false });
   }
 
   updateValues(inputValues) {
@@ -53,7 +57,11 @@ export default class WorkEntry extends Component {
     return (
       <div>
         {editOn ? (
-          <EntryForm startValues={values} handleSubmit={this.updateValues} />
+          <EntryForm
+            startValues={values}
+            handleClose={this.hideEdit}
+            handleSubmit={this.updateValues}
+          />
         ) : (
           <div className="entry">
             <EditButton handleClick={this.showEdit} />

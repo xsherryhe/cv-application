@@ -2,6 +2,7 @@ import { Component } from 'react';
 import '../styles/EntryForm.css';
 
 import InputField from './InputField';
+import CloseButton from './CloseButton';
 import SubmitButton from './SubmitButton';
 import Button from './Button';
 import DateFieldSet from './DateFieldSet';
@@ -11,7 +12,10 @@ export default class EntryForm extends Component {
   constructor(props) {
     super(props);
 
-    this.state = { inputValues: this.props.startValues, submitted: false };
+    this.state = {
+      inputValues: { ...this.props.startValues },
+      submitted: false,
+    };
 
     ['updateInput', 'handleSubmit'].forEach(
       (method) => (this[method] = this[method].bind(this))
@@ -21,7 +25,7 @@ export default class EntryForm extends Component {
   updateInput(attribute) {
     return function (inputValue) {
       const { inputValues } = this.state;
-      inputValues[attribute].value = inputValue;
+      inputValues[attribute] = { ...inputValues[attribute], value: inputValue };
       this.setState({ inputValues, submitted: false });
     }.bind(this);
   }
@@ -34,15 +38,16 @@ export default class EntryForm extends Component {
   }
 
   render() {
-    const { inline, short } = this.props;
+    const { inline, short, handleClose } = this.props;
     const { inputValues, submitted } = this.state;
     return (
       <form
         noValidate
-        className={inline ? 'inline' : short ? 'short' : ''}
+        className={`entry-form ${inline ? 'inline' : short ? 'short' : ''}`}
         action=""
         onSubmit={this.handleSubmit}
       >
+        {!inline && !short && <CloseButton handleClick={handleClose} />}
         {Object.entries(inputValues).map(
           ([attribute, { value, type }]) =>
             ({

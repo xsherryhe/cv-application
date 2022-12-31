@@ -6,8 +6,10 @@ import InputField from './InputField';
 export default function ListFieldSet({ name, items, submitted, handleChange }) {
   function handleFieldSetChange(changeId) {
     return function (inputValue) {
-      items.find(({ id }) => id === changeId).content = inputValue;
-      handleChange(items);
+      const newItems = items.map((item) =>
+        item.id === changeId ? { ...item, content: inputValue } : item
+      );
+      handleChange(newItems);
     };
   }
 

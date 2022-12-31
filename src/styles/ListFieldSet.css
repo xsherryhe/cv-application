@@ -4,3 +4,7 @@
   flex-direction: column;
   gap: 0.5rem;
 }
+
+.field-set.list input {
+  min-width: 35rem;
+}
