@@ -22,4 +22,6 @@ Application
       DatedEntry *
   PhotoUpload (hidden)
 
+  // TO DO: Honors and awards edit form, exit edit button, add entries buttons
+
 
