@@ -40,11 +40,12 @@ export default class InputField extends Component {
   }
 
   render() {
-    const { name, type, value, checked, min, max, required } = this.props;
+    const { icon, name, type, value, checked, min, max, required } = this.props;
     const { renderedError } = this.state;
 
     return (
       <div className="field">
+        {icon}
         {!(type === 'checkbox') && name && <Label name={name} />}
         <input
           type={type}
@@ -65,6 +66,7 @@ export default class InputField extends Component {
 }
 
 InputField.defaultProps = {
+  icon: false,
   name: '',
   type: 'text',
   value: '',

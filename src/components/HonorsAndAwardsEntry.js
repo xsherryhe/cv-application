@@ -17,15 +17,18 @@ export default class HonorsAndAwardsEntry extends Component {
   }
 
   showEdit() {
+    this.props.disableAll();
     this.setState({ editOn: true });
   }
 
   hideEdit() {
+    this.props.enableAll();
     this.setState({ editOn: false });
   }
 
   updateValues(inputValues) {
-    this.setState({ values: inputValues, editOn: false });
+    this.hideEdit();
+    this.setState({ values: inputValues });
   }
 
   render() {

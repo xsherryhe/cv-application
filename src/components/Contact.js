@@ -12,21 +12,37 @@ export default function Contact({
   emailContent = 'rwitterel@obra.dinn',
   phoneContent = '1-800-CAPTAIN',
   addressContent = '1807 Obra Dinn, Atlantic Ocean, World',
+  enableAll,
+  disableAll,
 }) {
   return (
     <div className="contact">
       <h2>
         <div className="email">
-          <FontAwesomeIcon icon={faEnvelope} />
-          <SimpleEntry content={emailContent} inputType="email" />
+          <SimpleEntry
+            icon={<FontAwesomeIcon icon={faEnvelope} />}
+            content={emailContent}
+            inputType="email"
+            enableAll={enableAll}
+            disableAll={disableAll}
+          />
         </div>
         <div className="phone">
-          <FontAwesomeIcon icon={faPhone} />
-          <SimpleEntry content={phoneContent} inputType="tel" />
+          <SimpleEntry
+            icon={<FontAwesomeIcon icon={faPhone} />}
+            content={phoneContent}
+            inputType="tel"
+            enableAll={enableAll}
+            disableAll={disableAll}
+          />
         </div>
         <div className="address">
-          <FontAwesomeIcon icon={faLocationDot} />
-          <SimpleEntry content={addressContent} />
+          <SimpleEntry
+            icon={<FontAwesomeIcon icon={faLocationDot} />}
+            content={addressContent}
+            enableAll={enableAll}
+            disableAll={disableAll}
+          />
         </div>
       </h2>
     </div>

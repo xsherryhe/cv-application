@@ -40,10 +40,13 @@ export default class SkillsAndCertifications extends Component {
   }
 
   render() {
+    const { enableAll, disableAll } = this.props;
     const { entries } = this.state;
     return (
       <Section
         name="Skills and Certifications"
+        enableAll={enableAll}
+        disableAll={disableAll}
         inlineForm={true}
         attributes={{ content: 'text' }}
         addEntry={this.addEntry}
@@ -51,6 +54,8 @@ export default class SkillsAndCertifications extends Component {
           id,
           entry: (
             <SkillsAndCertificationsEntry
+              enableAll={enableAll}
+              disableAll={disableAll}
               content={content}
               handleDelete={this.deleteEntry(id)}
             />

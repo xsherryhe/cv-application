@@ -51,3 +51,22 @@
 .entry-form.inline .buttons button {
   font-size: 1.5rem;
 }
+
+.entry-form.inline .field {
+  display: grid;
+  grid-template: max-content 1fr / repeat(2, max-content);
+  align-items: center;
+}
+
+.entry-form.inline .field :first-child:not(input) {
+  margin-right: 0.5rem;
+}
+
+.entry-form.inline input {
+  grid-column: 2;
+}
+
+.entry-form.inline .field .error {
+  grid-row: 2;
+  grid-column: 2;
+}

@@ -13,6 +13,6 @@
   grid-template-rows: 4rem max-content;
 }
 
-.name form.inline button.submit {
+.name form.inline .buttons button {
   font-size: 3rem;
 }

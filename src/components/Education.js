@@ -50,16 +50,21 @@ export default class Education extends Component {
   }
 
   render() {
+    const { enableAll, disableAll } = this.props;
     const { entries } = this.state;
     return (
       <Section
         name="Education"
+        enableAll={enableAll}
+        disableAll={disableAll}
         attributes={this.attributes}
         addEntry={this.addEntry}
         entries={entries.map((entry) => ({
           id: entry.id,
           entry: (
             <EducationEntry
+              enableAll={enableAll}
+              disableAll={disableAll}
               values={Object.entries(this.attributes).reduce(
                 (attributes, [attribute, type]) => ({
                   ...attributes,

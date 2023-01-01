@@ -5,13 +5,13 @@ import Work from './Work';
 import SkillsAndCertifications from './SkillsAndCertifications';
 import HonorsAndAwards from './HonorsAndAwards';
 
-export default function Main() {
+export default function Main({ enableAll, disableAll }) {
   return (
     <main>
-      <Education />
-      <Work />
-      <SkillsAndCertifications />
-      <HonorsAndAwards />
+      <Education enableAll={enableAll} disableAll={disableAll} />
+      <Work enableAll={enableAll} disableAll={disableAll} />
+      <SkillsAndCertifications enableAll={enableAll} disableAll={disableAll} />
+      <HonorsAndAwards enableAll={enableAll} disableAll={disableAll} />
     </main>
   );
 }

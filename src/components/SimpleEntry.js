@@ -20,19 +20,22 @@ export default class SimpleEntry extends Component {
   }
 
   showEdit() {
+    this.props.disableAll();
     this.setState({ editOn: true });
   }
 
   hideEdit() {
+    this.props.enableAll();
     this.setState({ editOn: false });
   }
 
   updateValues(inputValues) {
-    this.setState({ values: inputValues, editOn: false });
+    this.hideEdit();
+    this.setState({ values: inputValues });
   }
 
   render() {
-    const { handleDelete } = this.props;
+    const { icon, handleDelete } = this.props;
     const { values, editOn } = this.state;
     const content = values.content.value;
     return (
@@ -40,13 +43,16 @@ export default class SimpleEntry extends Component {
         {editOn ? (
           <EntryForm
             inline={true}
+            icon={icon}
             startValues={values}
             handleClose={this.hideEdit}
             handleSubmit={this.updateValues}
           />
         ) : (
           <div className="entry">
-            <div className="main">{content}</div>
+            <div className="main">
+              {icon} {content}
+            </div>
             <EditButton handleClick={this.showEdit} />
             {handleDelete && <DeleteButton handleClick={handleDelete} />}
           </div>
@@ -58,5 +64,6 @@ export default class SimpleEntry extends Component {
 
 SimpleEntry.defaultProps = {
   inputType: 'text',
+  icon: false,
   handleDelete: false,
 };

@@ -1,0 +1,19 @@
+.CV.disabled {
+  color: gray;
+}
+
+.CV.disabled .entry-form {
+  color: black;
+}
+
+.CV.disabled button {
+  color: gray;
+  cursor: default;
+  pointer-events: none;
+}
+
+.CV.disabled .entry-form button {
+  color: black;
+  cursor: pointer;
+  pointer-events: auto;
+}

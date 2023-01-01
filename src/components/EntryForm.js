@@ -38,7 +38,7 @@ export default class EntryForm extends Component {
   }
 
   render() {
-    const { inline, short, handleClose } = this.props;
+    const { inline, short, icon, handleClose } = this.props;
     const { inputValues, submitted } = this.state;
     return (
       <form
@@ -72,6 +72,7 @@ export default class EntryForm extends Component {
             }[type] || (
               <InputField
                 key={attribute}
+                icon={icon}
                 name={inline || short ? '' : attribute}
                 type={type}
                 value={value}

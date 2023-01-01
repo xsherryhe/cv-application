@@ -21,7 +21,3 @@ Application
     Section(Honors and Awards)
       DatedEntry *
   PhotoUpload (hidden)
-
-  // TO DO: disable all in edit mode?
-
-

@@ -45,10 +45,13 @@ export default class HonorsAndAwards extends Component {
   }
 
   render() {
+    const { enableAll, disableAll } = this.props;
     const { entries } = this.state;
     return (
       <Section
         name="Honors and Awards"
+        enableAll={enableAll}
+        disableAll={disableAll}
         shortForm={true}
         attributes={this.attributes}
         addEntry={this.addEntry}
@@ -56,6 +59,8 @@ export default class HonorsAndAwards extends Component {
           id: entry.id,
           entry: (
             <HonorsAndAwardsEntry
+              enableAll={enableAll}
+              disableAll={disableAll}
               values={Object.entries(this.attributes).reduce(
                 (attributes, [attribute, type]) => ({
                   ...attributes,

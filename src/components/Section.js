@@ -16,10 +16,12 @@ export default class Section extends Component {
   }
 
   showNew() {
+    this.props.disableAll();
     this.setState({ newOn: true });
   }
 
   hideNew() {
+    this.props.enableAll();
     this.setState({ newOn: false });
   }
 
