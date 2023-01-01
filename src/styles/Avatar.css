@@ -3,7 +3,7 @@
 }
 
 .avatar img {
-  border: 5px solid var(--background-color);
+  border: 5px double var(--background-color);
   border-radius: 0.2rem;
   width: 12rem;
   height: 15rem;

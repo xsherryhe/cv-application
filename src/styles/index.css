@@ -1,5 +1,5 @@
 :root {
-  --background-color: white;
+  --background-color: #e4ffff;
   --font-color: black;
 }
 
@@ -27,6 +27,12 @@ code {
 
 h3, ul {
   margin: 0;
+}
+
+button {
+  background-color: var(--background-color);
+  border: 2px solid var(--font-color);
+  border-radius: 0.2rem;
 }
 
 .hidden {

@@ -4,14 +4,37 @@ section {
   gap: 1rem;
 }
 
-section h2 {
+section > h2 {
+  background-color: var(--font-color);
+  color: var(--background-color);
+  padding: 0.5rem 3rem;
   margin: 0;
+  border-top: 5px var(--background-color) double;
+  border-bottom: 5px var(--background-color) double;
   display: flex;
   align-items: center;
   gap: 0.5rem;
   font-size: 2rem;
 }
 
-section h2 button.add {
+section > h2 button.add {
+  color: var(--background-color);
   font-size: 1.5rem;
+}
+
+section > * {
+  padding: 0 3rem;
+}
+
+section .entry-form {
+  width: 100%;
+  justify-items: center;
+}
+
+section .entry-form > *:not(button):not(.buttons) {
+  min-width: 28rem;
+}
+
+section .entry-form.inline, section .entry-form.short {
+  justify-content: center;
 }

@@ -21,3 +21,5 @@ Application
     Section(Honors and Awards)
       DatedEntry *
   PhotoUpload (hidden)
+
+  //TO DO: Hover button styles, add icon background, responsive sizing

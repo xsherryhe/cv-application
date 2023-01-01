@@ -6,7 +6,12 @@
 }
 
 .field-set.list .list-item-field {
-  display: flex;
+  display: grid;
+  grid-template: 1.6rem max-content / repeat(2, max-content);
+}
+
+.field-set.list .list-item-field .field {
+  grid-row: 1 / span 2;
 }
 
 .field-set.list input {

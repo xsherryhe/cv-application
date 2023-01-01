@@ -40,26 +40,28 @@ export default class Section extends Component {
           {name} <AddButton handleClick={this.showNew} />
         </h2>
         {newOn && (
-          <EntryForm
-            inline={inlineForm}
-            short={shortForm}
-            startValues={Object.entries(attributes).reduce(
-              (attributes, [attribute, type]) => ({
-                ...attributes,
-                [attribute]: {
-                  value:
-                    {
-                      date: { month: '', year: new Date().getFullYear() },
-                      list: [],
-                    }[type] || '',
-                  type,
-                },
-              }),
-              {}
-            )}
-            handleClose={this.hideNew}
-            handleSubmit={this.handleAdd}
-          />
+          <div>
+            <EntryForm
+              inline={inlineForm}
+              short={shortForm}
+              startValues={Object.entries(attributes).reduce(
+                (attributes, [attribute, type]) => ({
+                  ...attributes,
+                  [attribute]: {
+                    value:
+                      {
+                        date: { month: '', year: new Date().getFullYear() },
+                        list: [],
+                      }[type] || '',
+                    type,
+                  },
+                }),
+                {}
+              )}
+              handleClose={this.hideNew}
+              handleSubmit={this.handleAdd}
+            />
+          </div>
         )}
         {entries.map(({ id, entry }) => (
           <div key={id}>{entry}</div>

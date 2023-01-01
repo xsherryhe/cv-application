@@ -21,8 +21,6 @@
 }
 
 .entry-form:not(.short):not(.inline) {
-  border: 1px var(--font-color) dashed;
-  border-radius: 0.2rem;
   padding: 0.5rem 0.5rem 1rem;
 }
 
@@ -31,15 +29,20 @@
   row-gap: 0;
 }
 
+.entry-form.short > *:not(:first-child):not(.buttons) {
+  margin-top: 0.5rem;
+}
+
 .entry-form.short .field:first-child, .entry-form.short .field-set:first-child,
 .entry-form.inline .field,
 .entry-form.inline .field-set {
   grid-row: 1 / span 2;
-  grid-column: 1;
 }
 
-.entry-form.short .field:not(:first-child), .entry-form.short .field-set:not(:first-child) {
-  grid-column: 1 / span 3;
+.entry-form.short .field, .entry-form.short .field-set,
+.entry-form.inline .field,
+.entry-form.inline .field-set {
+  grid-column: 1;
 }
 
 .entry-form.short .buttons, .entry-form.inline .buttons {

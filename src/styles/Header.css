@@ -2,6 +2,7 @@ header {
   background-color: var(--font-color);
   color: var(--background-color);
   padding: 1rem;
+  border-bottom: 5px var(--background-color) double;
   display: grid;
   grid-template: 1fr max-content / max-content 1fr;
   justify-items: center;
