@@ -32,9 +32,11 @@ export default class SkillsAndCertifications extends Component {
   }
 
   deleteEntry(deleteId) {
-    this.setState({
-      entries: this.state.entries.filter(({ id }) => id !== deleteId),
-    });
+    return function () {
+      this.setState({
+        entries: this.state.entries.filter(({ id }) => id !== deleteId),
+      });
+    };
   }
 
   render() {
@@ -50,7 +52,7 @@ export default class SkillsAndCertifications extends Component {
           entry: (
             <SkillsAndCertificationsEntry
               content={content}
-              handleDelete={() => this.deleteEntry(id)}
+              handleDelete={this.deleteEntry(id)}
             />
           ),
         }))}

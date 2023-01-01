@@ -22,6 +22,6 @@ Application
       DatedEntry *
   PhotoUpload (hidden)
 
-  // TO DO: add to list buttons, disable all in edit mode?
+  // TO DO: disable all in edit mode?
 
 

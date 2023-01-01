@@ -42,9 +42,11 @@ export default class Education extends Component {
   }
 
   deleteEntry(deleteId) {
-    this.setState({
-      entries: this.state.entries.filter(({ id }) => id !== deleteId),
-    });
+    return function () {
+      this.setState({
+        entries: this.state.entries.filter(({ id }) => id !== deleteId),
+      });
+    };
   }
 
   render() {
@@ -65,7 +67,7 @@ export default class Education extends Component {
                 }),
                 {}
               )}
-              handleDelete={() => this.deleteEntry(entry.id)}
+              handleDelete={this.deleteEntry(entry.id)}
             />
           ),
         }))}

@@ -5,6 +5,10 @@
   gap: 0.5rem;
 }
 
+.field-set.list .list-item-field {
+  display: flex;
+}
+
 .field-set.list input {
   min-width: 35rem;
 }
