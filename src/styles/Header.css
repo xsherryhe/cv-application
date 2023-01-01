@@ -1,6 +1,12 @@
 header {
+  background-color: var(--font-color);
+  color: var(--background-color);
   padding: 1rem;
   display: grid;
   grid-template: 1fr max-content / max-content 1fr;
   justify-items: center;
+}
+
+header button, .CV.disabled header .entry-form, .CV.disabled header .entry-form button {
+  color: var(--background-color);
 }

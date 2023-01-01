@@ -1,9 +1,9 @@
-.CV.disabled {
+.CV.disabled > * {
   color: gray;
 }
 
 .CV.disabled .entry-form {
-  color: black;
+  color: var(--font-color);
 }
 
 .CV.disabled button {
@@ -13,7 +13,7 @@
 }
 
 .CV.disabled .entry-form button {
-  color: black;
+  color: var(--font-color);
   cursor: pointer;
   pointer-events: auto;
 }

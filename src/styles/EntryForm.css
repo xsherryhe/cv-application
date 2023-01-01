@@ -21,7 +21,7 @@
 }
 
 .entry-form:not(.short):not(.inline) {
-  border: 1px black dashed;
+  border: 1px var(--font-color) dashed;
   border-radius: 0.2rem;
   padding: 0.5rem 0.5rem 1rem;
 }
