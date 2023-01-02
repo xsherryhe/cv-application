@@ -13,6 +13,10 @@
   grid-column: 1;
 }
 
+.entry .main-detail {
+  font-weight: normal
+}
+
 .entry :not(button):not(h3) {
   grid-column: 1 / span 4;
 }

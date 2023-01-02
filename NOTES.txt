@@ -22,4 +22,4 @@ Application
       DatedEntry *
   PhotoUpload (hidden)
 
-  //TO DO: Hover button styles, add icon background, responsive sizing
+  //TO DO: Hover button styles, responsive sizing

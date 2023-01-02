@@ -47,7 +47,11 @@ export default class HonorsAndAwardsEntry extends Component {
         ) : (
           <div className="entry">
             <h3 className="main">
-              {content} - <DateComponent date={date} />
+              {content}
+              <span className="main-detail">
+                {' '}
+                - <DateComponent date={date} />
+              </span>
             </h3>
             <EditButton handleClick={this.showEdit} />
             {handleDelete && <DeleteButton handleClick={handleDelete} />}

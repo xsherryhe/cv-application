@@ -15,5 +15,7 @@ main form {
 main .entry, main .entry-form {
   background-color: white;
   padding: 1rem;
-  border: 3px solid var(--font-color);
+  border: 1px solid var(--font-color);
+  border-radius: 0.2rem;
+  box-shadow: var(--shadow);
 }

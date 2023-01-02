@@ -52,11 +52,11 @@ export default class EducationEntry extends Component {
             <EditButton handleClick={this.showEdit} />
             <DeleteButton handleClick={handleDelete} />
             <h3 className="main">{school}</h3>
-            <h4>Major: {major}</h4>
-            <h4>GPA: {gpa}</h4>
-            <h4>
+            <h4 className="major">Major: {major}</h4>
+            <div className="gpa">GPA: {gpa}</div>
+            <div className="date-range">
               <DateRange start={startDate} end={endDate} />
-            </h4>
+            </div>
           </div>
         )}
       </div>

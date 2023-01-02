@@ -1,6 +1,8 @@
 :root {
   --background-color: #e4ffff;
+  --dark-background-color: #a0ffff;
   --font-color: black;
+  --shadow: 0 0 5px var(--font-color);
 }
 
 html {
@@ -25,14 +27,12 @@ code {
     monospace;
 }
 
-h3, ul {
-  margin: 0;
+h1, h2, h3 {
+  font-weight: 600;
 }
 
-button {
-  background-color: var(--background-color);
-  border: 2px solid var(--font-color);
-  border-radius: 0.2rem;
+h3, ul {
+  margin: 0;
 }
 
 .hidden {

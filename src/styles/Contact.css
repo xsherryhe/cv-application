@@ -3,6 +3,7 @@
 }
 
 .contact .email, .contact .phone, .contact .address {
+  font-weight: normal;
   display: flex;
   justify-content: center;
   align-items: center;

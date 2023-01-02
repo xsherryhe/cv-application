@@ -1,5 +1,12 @@
 button {
   cursor: pointer;
+  background-color: var(--background-color);
+  border: 2px solid var(--font-color);
+  border-radius: 0.2rem;
+}
+
+button:hover {
+  background-color: var(--dark-background-color);
 }
 
 button:not(.icon) {
