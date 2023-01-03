@@ -2,7 +2,7 @@ This project is a webpage of an editable CV application. It uses the React frame
 
 The project primarily demonstrates use of basic structures in React, including elements, components, props, and state, in order to build a functional user interface.
 
-This project is currently in progress.
+A word of warning! This webpage may contain spoilers for the amazing video game [Return of the Obra Dinn](https://obradinn.com/).
 
 Image credits:
 
