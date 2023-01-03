@@ -31,3 +31,26 @@
 .image-upload button.close {
   align-self: flex-end;
 }
+
+@media (max-width: 575px) {
+  .image-upload {
+    padding: 3vh;
+  }
+
+  .image-upload form {
+    padding: 0.5rem;
+    gap: 0.25rem;
+  }
+
+  .image-upload h1 {
+    font-size: 8vw;
+    height: 8vw;
+    margin-top: -0.5rem;
+    display: flex;
+    align-items: center;
+  }
+
+  .image-upload button.close {
+    padding: 0;
+  }
+}
