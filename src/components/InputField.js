@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import '../styles/InputField.css';
+import { humanReadable } from '../utilities';
 
 import Error from './Error';
 import Label from './Label';
@@ -33,14 +34,26 @@ export default class InputField extends Component {
   }
 
   componentDidUpdate() {
-    const { submitted } = this.props;
+    const { submitted, handleError } = this.props;
     const { error, renderedError } = this.state;
-    if (submitted && error !== renderedError)
+    if (submitted && error !== renderedError) {
+      if (handleError) handleError(error);
       this.setState({ renderedError: error });
+    }
   }
 
   render() {
-    const { icon, name, type, value, checked, min, max, required } = this.props;
+    const {
+      icon,
+      name,
+      type,
+      value,
+      checked,
+      min,
+      max,
+      required,
+      handleError,
+    } = this.props;
     const { renderedError } = this.state;
 
     return (
@@ -59,7 +72,13 @@ export default class InputField extends Component {
           ref={this.ref}
         />
         {type === 'checkbox' && name && <Label name={name} />}
-        {renderedError && <Error content={renderedError} />}
+        {renderedError && !handleError && (
+          <Error
+            content={`${
+              name ? humanReadable(name) + ': ' : ''
+            }${renderedError}`}
+          />
+        )}
       </div>
     );
   }
@@ -72,4 +91,5 @@ InputField.defaultProps = {
   value: '',
   required: true,
   submitted: false,
+  handleError: false,
 };

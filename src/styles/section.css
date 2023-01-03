@@ -24,6 +24,9 @@ section > h2 button.add {
   font-size: 1rem;
   width: 1.5rem;
   height: 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
 }
 
 section > h2 button.add:hover {
@@ -46,4 +49,19 @@ section .entry-form > *:not(button):not(.buttons) {
 
 section .entry-form.inline, section .entry-form.short {
   justify-content: center;
+}
+
+@media (max-width: 575px) {
+  section > h2 {
+    justify-content: center;
+    text-align: center;
+  }
+
+  section > * {
+    padding: 0 0.5rem;
+  }
+
+  section .entry-form > *:not(button):not(.buttons) {
+    min-width: 0;
+  }
 }

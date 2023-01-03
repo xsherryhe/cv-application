@@ -17,3 +17,13 @@
 .field-set.list input {
   min-width: 35rem;
 }
+
+@media (max-width: 575px) {
+  .field-set.list label {
+    margin-left: 1rem;
+  }
+
+  .field-set.list button.add {
+    margin-right: 1rem;
+  }
+}

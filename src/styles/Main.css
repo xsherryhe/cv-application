@@ -19,3 +19,15 @@ main .entry, main .entry-form {
   border-radius: 0.2rem;
   box-shadow: var(--shadow);
 }
+
+@media (max-width: 575px) {
+  main .entry, main .entry-form {
+    padding: 0.5rem;
+    min-width: 85vw;
+  }
+
+  main .entry-form:not(.inline):not(.short) input:not([type="checkbox"]) {
+    min-width: 80vw;
+    width: 80vw;
+  }
+}

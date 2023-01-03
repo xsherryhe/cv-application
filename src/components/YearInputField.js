@@ -5,6 +5,7 @@ export default function YearInputField({
   required,
   submitted,
   handleChange,
+  handleError,
 }) {
   return (
     <InputField
@@ -16,6 +17,7 @@ export default function YearInputField({
       required={required}
       submitted={submitted}
       handleChange={handleChange}
+      handleError={handleError}
     />
   );
 }

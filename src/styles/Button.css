@@ -22,3 +22,9 @@ button.icon {
 button.icon:hover {
   color: var(--light-font-color);
 }
+
+@media (max-width: 575px) {
+  button.icon {
+    padding: 0.25rem;
+  }
+}

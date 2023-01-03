@@ -24,3 +24,9 @@
 .entry button {
   grid-row: 1;
 }
+
+@media (max-width: 700px) {
+  .entry {
+    grid-template-columns: 1fr repeat(2, max-content);
+  }
+}
