@@ -17,3 +17,7 @@
   cursor: pointer;
   pointer-events: auto;
 }
+
+.CV.disabled .entry-form button:hover {
+  color: var(--light-font-color);
+}

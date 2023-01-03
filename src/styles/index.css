@@ -2,6 +2,7 @@
   --background-color: #e4ffff;
   --dark-background-color: #a0ffff;
   --font-color: black;
+  --light-font-color: #005050;
   --shadow: 0 0 5px var(--font-color);
 }
 
@@ -16,6 +17,7 @@ body {
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  line-height: 1.5;
 }
 
 * {

@@ -18,3 +18,7 @@ button.icon {
   border: none;
   font-size: 1rem;
 }
+
+button.icon:hover {
+  color: var(--light-font-color);
+}

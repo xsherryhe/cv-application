@@ -2,7 +2,7 @@ header {
   position: relative;
   background-color: var(--font-color);
   color: white;
-  padding: 1rem;
+  padding: 2.5rem 1rem;
   border-bottom: 5px var(--background-color) double;
   box-shadow: var(--shadow);
   display: grid;
@@ -14,7 +14,7 @@ header button, .CV.disabled header .entry-form, .CV.disabled header .entry-form 
   color: white;
 }
 
-header button:hover,
-.CV.disabled header .entry-form button:hover {
+header button.icon:hover,
+.CV.disabled header .entry-form button.icon:hover {
   color: var(--dark-background-color);
 }

@@ -26,6 +26,11 @@ section > h2 button.add {
   height: 1.5rem;
 }
 
+section > h2 button.add:hover {
+  background-color: var(--dark-background-color);
+  color: var(--font-color);
+}
+
 section > * {
   padding: 0 3rem;
 }
