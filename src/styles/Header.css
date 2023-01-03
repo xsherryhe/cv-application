@@ -8,6 +8,7 @@ header {
   display: grid;
   grid-template: 1fr max-content / max-content 1fr;
   justify-items: center;
+  overflow: scroll;
 }
 
 header button, .CV.disabled header .entry-form, .CV.disabled header .entry-form button {
@@ -17,4 +18,16 @@ header button, .CV.disabled header .entry-form, .CV.disabled header .entry-form 
 header button.icon:hover,
 .CV.disabled header .entry-form button.icon:hover {
   color: var(--dark-background-color);
+}
+
+@media (max-width: 900px) {
+  header {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 575px) {
+  header {
+    padding: 1rem;
+  }
 }

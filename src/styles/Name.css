@@ -16,3 +16,13 @@
 .name form.inline .buttons button {
   font-size: 3rem;
 }
+
+@media (max-width: 575px) {
+  .name {
+    font-size: 7vw;
+  }
+
+  .name button.edit {
+    font-size: 5vw;
+  }
+}

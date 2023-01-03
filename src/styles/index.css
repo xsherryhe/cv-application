@@ -40,3 +40,9 @@ h3, ul {
 .hidden {
   display: none !important;
 }
+
+@media (max-width: 650px) {
+  html {
+    font-size: 16px;
+  }
+}
