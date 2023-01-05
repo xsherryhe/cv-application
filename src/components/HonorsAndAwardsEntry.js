@@ -1,63 +1,57 @@
-import { Component } from 'react';
+import { useState } from 'react';
 
 import EditButton from './EditButton';
 import DeleteButton from './DeleteButton';
 import EntryForm from './EntryForm';
 import DateComponent from './Date';
 
-export default class HonorsAndAwardsEntry extends Component {
-  constructor(props) {
-    super(props);
+export default function HonorsAndAwardsEntry({
+  values: startValues,
+  handleDelete,
+  disableAll,
+  enableAll,
+}) {
+  const [values, setValues] = useState(startValues);
+  const [editOn, setEditOn] = useState(false);
 
-    this.state = { values: this.props.values, editOn: false };
-
-    ['showEdit', 'hideEdit', 'updateValues'].forEach(
-      (method) => (this[method] = this[method].bind(this))
-    );
+  function showEdit() {
+    disableAll();
+    setEditOn(true);
   }
 
-  showEdit() {
-    this.props.disableAll();
-    this.setState({ editOn: true });
+  function hideEdit() {
+    enableAll();
+    setEditOn(false);
   }
 
-  hideEdit() {
-    this.props.enableAll();
-    this.setState({ editOn: false });
+  function updateValues(inputValues) {
+    hideEdit();
+    setValues(inputValues);
   }
 
-  updateValues(inputValues) {
-    this.hideEdit();
-    this.setState({ values: inputValues });
-  }
-
-  render() {
-    const { handleDelete } = this.props;
-    const { values, editOn } = this.state;
-    const [content, date] = Object.values(values).map(({ value }) => value);
-    return (
-      <div>
-        {editOn ? (
-          <EntryForm
-            short={true}
-            startValues={values}
-            handleClose={this.hideEdit}
-            handleSubmit={this.updateValues}
-          />
-        ) : (
-          <div className="entry">
-            <h3 className="main">
-              {content}
-              <span className="main-detail">
-                {' '}
-                - <DateComponent date={date} />
-              </span>
-            </h3>
-            <EditButton handleClick={this.showEdit} />
-            {handleDelete && <DeleteButton handleClick={handleDelete} />}
-          </div>
-        )}
-      </div>
-    );
-  }
+  const [content, date] = Object.values(values).map(({ value }) => value);
+  return (
+    <div>
+      {editOn ? (
+        <EntryForm
+          short={true}
+          startValues={values}
+          handleClose={hideEdit}
+          handleSubmit={updateValues}
+        />
+      ) : (
+        <div className="entry">
+          <h3 className="main">
+            {content}
+            <span className="main-detail">
+              {' '}
+              - <DateComponent date={date} />
+            </span>
+          </h3>
+          <EditButton handleClick={showEdit} />
+          {handleDelete && <DeleteButton handleClick={handleDelete} />}
+        </div>
+      )}
+    </div>
+  );
 }

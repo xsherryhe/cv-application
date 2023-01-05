@@ -1,40 +1,29 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import '../styles/CV.css';
 
 import Header from './Header';
 import Main from './Main';
 
-export default class CV extends Component {
-  constructor(props) {
-    super(props);
+export default function CV({ avatarImage, handleEditAvatarClick }) {
+  const [disabled, setDisabled] = useState(false);
 
-    this.state = { disabled: false };
-    ['enable', 'disable'].forEach(
-      (method) => (this[method] = this[method].bind(this))
-    );
+  function enable() {
+    setDisabled(false);
   }
 
-  enable() {
-    this.setState({ disabled: false });
+  function disable() {
+    setDisabled(true);
   }
 
-  disable() {
-    this.setState({ disabled: true });
-  }
-
-  render() {
-    const { avatarImage, handleEditAvatarClick } = this.props;
-    const { disabled } = this.state;
-    return (
-      <div className={`CV ${disabled ? 'disabled' : ''}`}>
-        <Header
-          avatarImage={avatarImage}
-          handleEditAvatarClick={handleEditAvatarClick}
-          enableAll={this.enable}
-          disableAll={this.disable}
-        />
-        <Main enableAll={this.enable} disableAll={this.disable} />
-      </div>
-    );
-  }
+  return (
+    <div className={`CV ${disabled ? 'disabled' : ''}`}>
+      <Header
+        avatarImage={avatarImage}
+        handleEditAvatarClick={handleEditAvatarClick}
+        enableAll={enable}
+        disableAll={disable}
+      />
+      <Main enableAll={enable} disableAll={disable} />
+    </div>
+  );
 }

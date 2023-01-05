@@ -1,4 +1,4 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import '../styles/entry.css';
 
 import EditButton from './EditButton';
@@ -7,60 +7,54 @@ import DateRange from './DateRange';
 import List from './List';
 import EntryForm from './EntryForm';
 
-export default class WorkEntry extends Component {
-  constructor(props) {
-    super(props);
+export default function WorkEntry({
+  values: startValues,
+  handleDelete,
+  disableAll,
+  enableAll,
+}) {
+  const [values, setValues] = useState(startValues);
+  const [editOn, setEditOn] = useState(false);
 
-    this.state = { values: this.props.values, editOn: false };
-
-    ['showEdit', 'hideEdit', 'updateValues'].forEach((method) => {
-      this[method] = this[method].bind(this);
-    });
+  function showEdit() {
+    disableAll();
+    setEditOn(true);
   }
 
-  showEdit() {
-    this.props.disableAll();
-    this.setState({ editOn: true });
+  function hideEdit() {
+    enableAll();
+    setEditOn(false);
   }
 
-  hideEdit() {
-    this.props.enableAll();
-    this.setState({ editOn: false });
+  function updateValues(inputValues) {
+    hideEdit();
+    setValues(inputValues);
   }
 
-  updateValues(inputValues) {
-    this.hideEdit();
-    this.setState({ values: inputValues });
-  }
+  const [company, position, startDate, endDate, details] = Object.values(
+    values
+  ).map(({ value }) => value);
 
-  render() {
-    const { handleDelete } = this.props;
-    const { values, editOn } = this.state;
-    const [company, position, startDate, endDate, details] = Object.values(
-      values
-    ).map(({ value }) => value);
-
-    return (
-      <div>
-        {editOn ? (
-          <EntryForm
-            startValues={values}
-            handleClose={this.hideEdit}
-            handleSubmit={this.updateValues}
-          />
-        ) : (
-          <div className="entry">
-            <EditButton handleClick={this.showEdit} />
-            <DeleteButton handleClick={handleDelete} />
-            <h3 className="main">{company}</h3>
-            <h4>{position}</h4>
-            <h4>
-              <DateRange start={startDate} end={endDate} />
-            </h4>
-            <List items={details} />
-          </div>
-        )}
-      </div>
-    );
-  }
+  return (
+    <div>
+      {editOn ? (
+        <EntryForm
+          startValues={values}
+          handleClose={hideEdit}
+          handleSubmit={updateValues}
+        />
+      ) : (
+        <div className="entry">
+          <EditButton handleClick={showEdit} />
+          <DeleteButton handleClick={handleDelete} />
+          <h3 className="main">{company}</h3>
+          <h4>{position}</h4>
+          <h4>
+            <DateRange start={startDate} end={endDate} />
+          </h4>
+          <List items={details} />
+        </div>
+      )}
+    </div>
+  );
 }

@@ -1,46 +1,41 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import '../styles/ImageUpload.css';
 
 import FileField from './FileField';
 import CloseButton from './CloseButton';
 import Button from './Button';
 
-export default class ImageUpload extends Component {
-  constructor(props) {
-    super(props);
-    this.state = { image: this.props.startImage };
+export default function ImageUpload({
+  startImage,
+  imageName,
+  parentHeight,
+  handleClose,
+  handleSubmit,
+}) {
+  const [image, setImage] = useState(startImage);
 
-    ['updateImage', 'handleSubmit'].forEach(
-      (method) => (this[method] = this[method].bind(this))
-    );
+  function updateImage(imageSrc) {
+    setImage(imageSrc);
   }
 
-  updateImage(imageSrc) {
-    this.setState({ image: imageSrc });
-  }
-
-  handleSubmit(e) {
+  function handleUploadSubmit(e) {
     e.preventDefault();
-    this.props.handleSubmit(this.state.image);
+    handleSubmit(image);
   }
 
-  render() {
-    const { imageName, parentHeight, handleCloseClick } = this.props;
-    const { image } = this.state;
-    return (
-      <div className="image-upload" style={{ minHeight: `${parentHeight}px` }}>
-        <form action="" onSubmit={this.handleSubmit}>
-          <CloseButton handleClick={handleCloseClick} />
-          <h1>{imageName}</h1>
-          <img src={image} alt="" />
-          <FileField
-            content={`Select New ${imageName}`}
-            handleChange={this.updateImage}
-            fileType="image/*"
-          />
-          <Button type="submit" content="Submit" />
-        </form>
-      </div>
-    );
-  }
+  return (
+    <div className="image-upload" style={{ minHeight: `${parentHeight}px` }}>
+      <form action="" onSubmit={handleUploadSubmit}>
+        <CloseButton handleClick={handleClose} />
+        <h1>{imageName}</h1>
+        <img src={image} alt="" />
+        <FileField
+          content={`Select New ${imageName}`}
+          handleChange={updateImage}
+          fileType="image/*"
+        />
+        <Button type="submit" content="Submit" />
+      </form>
+    </div>
+  );
 }

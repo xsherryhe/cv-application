@@ -1,74 +1,68 @@
-import { Component } from 'react';
+import { useState } from 'react';
 import '../styles/Section.css';
 
 import AddButton from './AddButton';
 import EntryForm from './EntryForm';
 
-export default class Section extends Component {
-  constructor(props) {
-    super(props);
+export default function Section({
+  name,
+  attributes,
+  entries = [],
+  inlineForm = false,
+  shortForm = false,
+  addEntry,
+  disableAll,
+  enableAll,
+}) {
+  const [newOn, setNewOn] = useState(false);
 
-    this.state = { newOn: false };
-
-    ['showNew', 'hideNew', 'handleAdd'].forEach(
-      (method) => (this[method] = this[method].bind(this))
-    );
+  function showNew() {
+    disableAll();
+    setNewOn(true);
   }
 
-  showNew() {
-    this.props.disableAll();
-    this.setState({ newOn: true });
+  function hideNew() {
+    enableAll();
+    setNewOn(false);
   }
 
-  hideNew() {
-    this.props.enableAll();
-    this.setState({ newOn: false });
+  function handleAdd(inputValues) {
+    hideNew();
+    addEntry(inputValues);
   }
 
-  handleAdd(inputValues) {
-    this.hideNew();
-    this.props.addEntry(inputValues);
-  }
-
-  render() {
-    const { name, attributes, entries, inlineForm, shortForm } = this.props;
-    const { newOn } = this.state;
-
-    return (
-      <section className={name.toLowerCase().split(' ').join('-')}>
-        <h2>
-          {name} <AddButton handleClick={this.showNew} />
-        </h2>
-        {newOn && (
-          <div>
-            <EntryForm
-              inline={inlineForm}
-              short={shortForm}
-              startValues={Object.entries(attributes).reduce(
-                (attributes, [attribute, type]) => ({
-                  ...attributes,
-                  [attribute]: {
-                    value:
-                      {
-                        date: { month: '', year: new Date().getFullYear() },
-                        list: [],
-                      }[type] || '',
-                    type,
-                  },
-                }),
-                {}
-              )}
-              handleClose={this.hideNew}
-              handleSubmit={this.handleAdd}
-            />
-          </div>
-        )}
-        {entries.map(({ id, entry }) => (
-          <div key={id}>{entry}</div>
-        ))}
-      </section>
-    );
-  }
+  return (
+    <section className={name.toLowerCase().split(' ').join('-')}>
+      <h2>
+        {name} <AddButton handleClick={showNew} />
+      </h2>
+      {newOn && (
+        <div>
+          <EntryForm
+            inline={inlineForm}
+            short={shortForm}
+            startValues={Object.entries(attributes).reduce(
+              (attributes, [attribute, type]) => ({
+                ...attributes,
+                [attribute]: {
+                  value:
+                    {
+                      date: { month: '', year: new Date().getFullYear() },
+                      list: [],
+                    }[type] || '',
+                  type,
+                },
+              }),
+              {}
+            )}
+            handleClose={hideNew}
+            handleSubmit={handleAdd}
+          />
+        </div>
+      )}
+      {entries.map(({ id, entry }) => (
+        <div key={id}>{entry}</div>
+      ))}
+    </section>
+  );
 }
-
-Section.defaultProps = { entries: [], inlineForm: false, shortForm: false };

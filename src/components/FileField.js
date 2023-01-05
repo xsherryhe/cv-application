@@ -1,50 +1,41 @@
-import React, { Component } from 'react';
+import { useState, useRef } from 'react';
 
 import Button from './Button';
 import Error from './Error';
 
-export default class FileField extends Component {
-  constructor(props) {
-    super(props);
-    this.fileTypeReg = {
+export default function FileField({ content, fileType, handleChange }) {
+  const [error, setError] = useState('');
+  const fileTypeReg = useRef(
+    {
       'image/*': /\.(jpg|jpeg|png|svg|gif)$/i,
-    }[this.props.fileType];
-    this.fileInputRef = React.createRef();
-    this.state = { error: '' };
+    }[fileType]
+  );
 
-    ['handleSelectFileClick', 'handleFileChange'].forEach(
-      (method) => (this[method] = this[method].bind(this))
-    );
-  }
+  const fileInput = useRef();
 
-  handleSelectFileClick(e) {
+  function handleSelectFileClick(e) {
     e.preventDefault();
-    this.fileInputRef.current.click();
+    fileInput.current.click();
   }
 
-  handleFileChange(e) {
-    const { handleChange } = this.props;
-    const fileTypeMatch = this.fileTypeReg.test(e.target.value);
+  function handleFileChange(e) {
+    const fileTypeMatch = fileTypeReg.current.test(e.target.value);
 
-    this.setState({ error: fileTypeMatch ? '' : 'Invalid file type!' });
+    setError(fileTypeMatch ? '' : 'Invalid file type!');
     if (fileTypeMatch) handleChange(URL.createObjectURL(e.target.files[0]));
   }
 
-  render() {
-    const { content, fileType } = this.props;
-    const { error } = this.state;
-    return (
-      <div className="field">
-        <Button content={content} handleClick={this.handleSelectFileClick} />
-        <input
-          className="hidden"
-          type="file"
-          accept={fileType}
-          onChange={this.handleFileChange}
-          ref={this.fileInputRef}
-        />
-        {error && <Error content={error} />}
-      </div>
-    );
-  }
+  return (
+    <div className="field">
+      <Button content={content} handleClick={handleSelectFileClick} />
+      <input
+        className="hidden"
+        type="file"
+        accept={fileType}
+        onChange={handleFileChange}
+        ref={fileInput}
+      />
+      {error && <Error content={error} />}
+    </div>
+  );
 }

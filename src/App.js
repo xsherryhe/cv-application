@@ -42,7 +42,7 @@ export default class App extends Component {
             startImage={avatarImage}
             imageName="Avatar"
             parentHeight={this.self.current.clientHeight}
-            handleCloseClick={this.hideImageUpload}
+            handleClose={this.hideImageUpload}
             handleSubmit={this.updateAvatarImage}
           />
         )}

@@ -1,95 +1,66 @@
-import React, { Component } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import '../styles/InputField.css';
 import { humanReadable } from '../utilities';
 
 import Error from './Error';
 import Label from './Label';
 
-export default class InputField extends Component {
-  constructor(props) {
-    super(props);
+export default function InputField({
+  icon = false,
+  name = '',
+  type = 'text',
+  value = '',
+  checked,
+  min,
+  max,
+  required = true,
+  handleChange,
+  handleError = false,
+  submitted = false,
+}) {
+  const [error, setError] = useState('');
+  const [renderedError, setRenderedError] = useState('');
+  const input = useRef();
 
-    this.state = { error: '', renderedError: '' };
-    this.ref = React.createRef();
-
-    ['validate', 'handleChange'].forEach(
-      (method) => (this[method] = this[method].bind(this))
-    );
-  }
-
-  validate(element) {
-    element.checkValidity();
-    this.setState({ error: element.validationMessage });
-  }
-
-  handleChange(e) {
-    this.validate(e.target);
-    this.props.handleChange(
+  function handleFieldChange(e) {
+    handleChange(
       e.target.type === 'checkbox' ? e.target.checked : e.target.value
     );
   }
 
-  componentDidMount() {
-    this.validate(this.ref.current);
-  }
+  useEffect(() => {
+    input.current.checkValidity();
+    setError(input.current.validationMessage);
+  }, [value, checked, min, max, required]);
 
-  componentDidUpdate() {
-    const { submitted, handleError } = this.props;
-    const { error, renderedError } = this.state;
+  useEffect(() => {
     if (submitted && error !== renderedError) {
       if (handleError) handleError(error);
-      this.setState({ renderedError: error });
+      setRenderedError(error);
     }
-  }
+  }, [error, renderedError, submitted, handleError]);
 
-  render() {
-    const {
-      icon,
-      name,
-      type,
-      value,
-      checked,
-      min,
-      max,
-      required,
-      handleError,
-    } = this.props;
-    const { renderedError } = this.state;
-
-    return (
-      <div className="field">
-        {icon}
-        {!(type === 'checkbox') && name && <Label name={name} />}
-        <input
-          type={type}
-          id={name}
-          value={value}
-          checked={checked}
-          min={min}
-          max={max}
-          onChange={this.handleChange}
-          required={required}
-          ref={this.ref}
+  return (
+    <div className="field">
+      {icon}
+      {!(type === 'checkbox') && name && <Label name={name} />}
+      <input
+        type={type}
+        id={name}
+        value={value}
+        checked={checked}
+        min={min}
+        max={max}
+        onChange={handleFieldChange}
+        required={required}
+        ref={input}
+      />
+      {type === 'checkbox' && name && <Label name={name} />}
+      {renderedError && !handleError && (
+        <Error
+          content={`${name ? humanReadable(name) + ': ' : ''}${renderedError}`}
         />
-        {type === 'checkbox' && name && <Label name={name} />}
-        {renderedError && !handleError && (
-          <Error
-            content={`${
-              name ? humanReadable(name) + ': ' : ''
-            }${renderedError}`}
-          />
-        )}
-      </div>
-    );
-  }
+      )}
+    </div>
+  );
 }
-
-InputField.defaultProps = {
-  icon: false,
-  name: '',
-  type: 'text',
-  value: '',
-  required: true,
-  submitted: false,
-  handleError: false,
-};
