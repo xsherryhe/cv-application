@@ -46,7 +46,7 @@ export default class Education extends Component {
       this.setState({
         entries: this.state.entries.filter(({ id }) => id !== deleteId),
       });
-    };
+    }.bind(this);
   }
 
   render() {
